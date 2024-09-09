@@ -1,0 +1,272 @@
+.container {
+  position: relative;
+  width: 100%;
+  border-radius: 30px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: var(--white);
+  flex-shrink: 0;
+}
+
+.firstLine {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 144px;
+}
+
+.titleContainer {
+  border-radius: 30px;
+  padding-left: 14px;
+  padding-right: 14px;
+  width: 80px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--orange);
+}
+
+.imgContainer {
+  width: 94px;
+  height: 94px;
+}
+
+.iconAvatar {
+  width: 40px;
+  height: 40px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+.iconUserContainer {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconUser {
+  width: 100%;
+  height: 100%;
+  fill: var(--white);
+  stroke: var(--white);
+}
+
+.photoContainer {
+  position: absolute;
+  top: 54px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.uploadWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.uploadBtn {
+  width: 94px;
+  border: none;
+  outline: none;
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  background-color: transparent;
+  text-decoration-skip-ink: none;
+  color: var(--primary);
+}
+
+.editBtn {
+  cursor: pointer;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  margin: 0;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--orange-light);
+}
+
+.iconEdit {
+  width: 18px;
+  height: 18px;
+}
+
+.editBtn:hover {
+  background-color: var(--orange-light-hover);
+}
+
+.infoTitle {
+  width: 100%;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.infoWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.item {
+  border: 1px solid var(--orange);
+  border-radius: 30px;
+  padding: 12px;
+  height: 42px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: var(--primary);
+}
+
+.petSection {
+  margin-bottom: 20px;
+}
+
+.addWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.addTitle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--primary);
+}
+
+.iconPlus {
+  width: 18px;
+  height: 18px;
+  fill: var(--white);
+  margin-left: 4px;
+}
+
+@media screen and (min-width: 375px) {
+  .container {
+    width: 335px;
+  }
+
+  .petSection {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 704px;
+    border-radius: 60px;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+  }
+
+  .firstLine {
+    margin-bottom: 118px;
+  }
+
+  .imgContainer {
+    width: 110px;
+    height: 110px;
+  }
+
+  .photoContainer {
+    position: absolute;
+    top: 40px;
+  }
+
+  .uploadWrapper {
+    gap: 8px;
+  }
+
+  .uploadBtn {
+    width: 110px;
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  .infoTitle {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .infoWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+
+  .item {
+    width: 305px;
+    padding: 16px;
+    height: 52px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .addTitle {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .petSection {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 520px;
+  }
+
+  .firstLine {
+    margin-bottom: 100px;
+  }
+
+  .uploadWrapper {
+    gap: 8px;
+  }
+
+  .infoWrapper {
+    flex-direction: column;
+  }
+
+  .item {
+    width: 100%;
+  }
+  .petSection {
+    margin-bottom: 40px;
+  }
+}

@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  background-color: var(--main-bgr);
+  color: var(--main-color);
+}
+
+/* ::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(38, 38, 38, 0.08);
+  border-radius: 13px;
+  min-height: 30px;
+  height: 100px;
+}
+
+::-webkit-scrollbar-thumb::before {
+  content: "";
+  display: block;
+  height: 100%;
+  min-height: 30px;
+  max-height: 100px;
+  background: rgba(38, 38, 38, 0.08);
+  border-radius: 7px;
+} */

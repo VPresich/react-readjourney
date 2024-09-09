@@ -1,0 +1,119 @@
+.container {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+.btn {
+  border-radius: 30px;
+  width: 100%;
+  height: 42px;
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background-color: var(--white);
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  transition: border-color 0.5s ease;
+}
+
+.btn:hover {
+  border-color: var(--orange);
+}
+
+.btn .text {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: var(--primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  stroke: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.btn.open .icon {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.dropdownWrapper {
+  position: absolute;
+  width: 100%;
+  top: calc(100% + 4px);
+  left: 0;
+  border-radius: 15px;
+  box-shadow: 0 20px 69px 0 rgba(0, 0, 0, 0.07);
+  background: #fff;
+  padding: 12px;
+  z-index: 10;
+  max-height: 214px;
+  overflow-y: auto;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.option {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.option.selected {
+  color: var(--orange);
+}
+
+.option.inactive {
+  color: rgba(38, 38, 38, 0.6);
+}
+
+.option input {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .btn {
+    height: 48px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .dropdownWrapper {
+    padding: 14px;
+  }
+
+  .option {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}

@@ -1,0 +1,111 @@
+.section {
+  padding: 20px;
+  background-color: var(--main-bgr);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formContainer {
+  width: 100%;
+  padding-top: 20xp;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 30px;
+  background: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.imgContainer {
+  width: 100%;
+  border-radius: 30px;
+  padding-top: 20px;
+  padding-top: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  height: 351px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text {
+  color: white;
+}
+
+@media screen and (min-width: 375xp) {
+  .formContainer {
+    width: 335px;
+    height: 411px;
+  }
+
+  .imgContainer {
+    width: 335px;
+    height: 351px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    padding-top: 114px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 32px;
+  }
+
+  .imgContainer {
+    display: none;
+  }
+
+  .formContainer {
+    padding: 30px 140px;
+    width: 100%;
+    border-radius: 60px;
+    height: 560px;
+    row-gap: 16px;
+  }
+
+  .petBlock {
+    display: flex;
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .section {
+    padding-right: 32px;
+  }
+
+  .imgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .imgContainer {
+    width: 50%;
+    height: 654px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+}

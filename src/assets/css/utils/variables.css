@@ -1,0 +1,13 @@
+:root {
+  --main-bgr: #141414;
+  --main-color: #f9f9f9;
+  --inactive-color: #686868;
+  --secondary-color: #1f1f1f;
+  --control-color: #262626;
+  --border-color: rgba(249, 249, 249, 0.1);
+  --blue-color: #4f92f7;
+  --green-color: #30b94d;
+  --red-color: #e90516;
+
+  /* -- rgba(227, 227, 227, 0.3); */
+}
