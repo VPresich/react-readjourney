@@ -1,0 +1,44 @@
+.nav {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    display: flex;
+    column-gap: 32px;
+  }
+
+  .item {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--inactive-color);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    padding-bottom: 8px;
+    padding-top: 8px;
+  }
+
+  .item.active,
+  .item:hover {
+    position: relative;
+    color: var(--main-color);
+  }
+
+  .item.active::after,
+  .item:hover::after {
+    content: " ";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--blue-color);
+    transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+}

@@ -1,12 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-export const clPresetName = import.meta.env.VITE_UPLOAD_PRESET_NAME;
-
-import {
-  saveFavoritesIds,
-  saveFavorites,
-  savePets,
-  saveViewedPets,
-} from "../favorites/slice";
 
 import { axiosInst, setAuthHeader, clearAuthHeader } from "../../api/axiosInst";
 
@@ -56,7 +48,6 @@ export const refreshUser = createAsyncThunk(
       // Add it to the HTTP header and perform the request
       setAuthHeader(savedToken);
       const response = await axiosInst.get("users/current");
-      thunkAPI.dispatch(saveFavoritesIds(response.data.noticesFavorites));
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -71,48 +62,5 @@ export const refreshUser = createAsyncThunk(
       // If there is no token, exit without performing any request
       return savedToken !== null;
     },
-  }
-);
-
-export const getFullUserInfo = createAsyncThunk(
-  "auth/getFullUserInfo",
-  async (_, thunkAPI) => {
-    try {
-      // Reading the token from the state via getState()
-      const reduxState = thunkAPI.getState();
-      const savedToken = reduxState.auth.token;
-
-      // Add it to the HTTP header and perform the request
-      setAuthHeader(savedToken);
-      const response = await axiosInst.get("users/current/full");
-      thunkAPI.dispatch(saveFavorites(response.data.noticesFavorites));
-      thunkAPI.dispatch(saveViewedPets(response.data.noticesViewed));
-      thunkAPI.dispatch(savePets(response.data.pets));
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  },
-  {
-    condition: (_, { getState }) => {
-      // Reading the token from the state via getState()
-      const state = getState();
-      const savedToken = state.auth.token;
-
-      // If there is no token, exit without performing any request
-      return savedToken !== null;
-    },
-  }
-);
-
-export const updateUserInfo = createAsyncThunk(
-  "auth/currentEdit",
-  async (data, thunkAPI) => {
-    try {
-      const response = await axiosInst.patch("users/current/edit", data);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
   }
 );

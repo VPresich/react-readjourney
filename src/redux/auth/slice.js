@@ -1,20 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { setAuthHeader } from "../../api/axiosInst";
-import {
-  register,
-  logIn,
-  logOut,
-  refreshUser,
-  getFullUserInfo,
-  updateUserInfo,
-} from "./operations";
+import { register, logIn, logOut, refreshUser } from "./operations";
 
 const initialState = {
-  user: { name: null, email: null, avatarURL: "", phone: "" },
+  user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
-  isLoading: false,
   error: null,
 };
 
@@ -65,7 +57,7 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(logOut.fulfilled, (state) => {
-        state.user = { name: null, email: null, theme: "red" };
+        state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
         state.error = null;
@@ -82,8 +74,6 @@ const authSlice = createSlice({
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
-        state.user.phone = action.payload.phone;
-        state.user.avatarURL = action.payload.avatar;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
@@ -91,42 +81,7 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
         state.error = action.payload;
-      })
-      //------------------------------------------------
-      .addCase(getFullUserInfo.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(getFullUserInfo.fulfilled, (state, action) => {
-        state.user.name = action.payload.name;
-        state.user.email = action.payload.email;
-        state.user.phone = action.payload.phone;
-        state.user.avatarURL = action.payload.avatar;
-        state.isLoading = false;
-        state.error = null;
-      })
-      .addCase(getFullUserInfo.rejected, (state, action) => {
-        state.error = action.payload;
-        state.isLoading = false;
-      })
-      //------------------------------------------------;
-      .addCase(updateUserInfo.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(updateUserInfo.fulfilled, (state, action) => {
-        state.user.name = action.payload.name;
-        state.user.email = action.payload.email;
-        state.user.phone = action.payload.phone;
-        state.user.avatarURL = action.payload.avatar;
-        state.isLoading = false;
-        state.error = null;
-      })
-      .addCase(updateUserInfo.rejected, (state, action) => {
-        state.error = action.payload;
-        state.isLoading = false;
       });
-    //------------------------------------------------;
   },
 });
 

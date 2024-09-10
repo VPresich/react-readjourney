@@ -8,18 +8,14 @@
 }
 
 .container {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
 }
 
 .icon {
   width: 100%;
   height: 100%;
-  stroke: var(--primary);
-}
-
-.icon.home {
-  stroke: var(--white);
+  stroke: var(--main-color);
 }
 
 .mobileMenu {
@@ -27,19 +23,15 @@
   position: fixed;
   top: 0px;
   right: -400px;
-  width: 218px;
+  width: 200px;
   height: 100vh;
-  background-color: var(--orange);
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 156px;
+  background-color: var(--control-color);
+  padding-left: 40px;
+  padding-right: 34px;
+  padding-top: 280px;
   padding-bottom: 40px;
   transition: right 0.3s ease;
   z-index: 102;
-}
-
-.mobileMenu.home {
-  background-color: var(--white);
 }
 
 .mobileMenu.open {
@@ -48,8 +40,8 @@
 
 .closeBtn {
   position: absolute;
-  top: 28px;
-  right: 20px;
+  top: 40px;
+  right: 34px;
   background: none;
   border: none;
   margin: 0;
@@ -62,36 +54,14 @@
 }
 
 .closeIcon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   fill: transparent;
   stroke-width: 2.5px;
-  stroke: var(--white);
-}
-
-.closeIcon.home {
-  stroke: var(--primary);
+  stroke: var(--main-color);
 }
 
 @media screen and (min-width: 768px) {
-  .burgerBtn {
-    width: 36px;
-    height: 36px;
-  }
-
-  .mobileMenu {
-    width: 374px;
-    padding-left: 49px;
-    padding-right: 49px;
-  }
-
-  .closeIcon {
-    width: 36px;
-    height: 36px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
   .burgerBtn {
     display: none;
   }

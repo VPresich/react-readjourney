@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import Logo from "../../components/LogoRead/LogoRead";
+import Logo from "../../components/Logo/Logo";
 import AuthTitle from "../../components/Authentication/AuthTitle/AuthTitle";
 import {
   errNotify,
@@ -17,7 +17,7 @@ import RegisterForm from "../../components/Authentication/Forms/RegisterForm/Reg
 import imgDesktop1x from "../../assets/img/authentication/iPhone_desktop@1x.png";
 import imgDesktop2x from "../../assets/img/authentication/iPhone_desktop@2x.png";
 import imgMobile1x from "../../assets/img/authentication/iPhone_mobile@1x.png";
-import imgMobile2x from "../../assets/img/authentication/iPhone_mobile@1x.png";
+import imgMobile2x from "../../assets/img/authentication/iPhone_mobile@2x.png";
 
 import css from "./RegisterPage.module.css";
 
@@ -30,10 +30,10 @@ const imageData = {
 };
 
 const RegisterPage = () => {
-  console.log("RegisterReadPage, OK");
   const dispatch = useDispatch();
 
   const handleRegister = (values) => {
+    console.log(values);
     dispatch(register(values))
       .unwrap()
       .then(() => {

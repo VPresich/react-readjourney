@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import Logo from "../../components/LogoRead/LogoRead";
+import Logo from "../../components/Logo/Logo";
 import AuthTitle from "../../components/Authentication/AuthTitle/AuthTitle";
 import {
   errNotify,
@@ -9,7 +9,7 @@ import {
   ERR_REGISTRATION,
   SUCCESS_REGISTRATION,
 } from "../../components/Authentication/Forms/constants";
-import { register } from "../../redux/auth/operations";
+import { logIn } from "../../redux/auth/operations";
 import DocumentTitle from "../../components/DocumentTitle";
 import ResponsiveImage from "../../components/UI/ResponsiveImg/ResponsiveImg";
 import LoginForm from "../../components/Authentication/Forms/LoginForm/LoginForm";
@@ -17,7 +17,7 @@ import LoginForm from "../../components/Authentication/Forms/LoginForm/LoginForm
 import imgDesktop1x from "../../assets/img/authentication/iPhone_desktop@1x.png";
 import imgDesktop2x from "../../assets/img/authentication/iPhone_desktop@2x.png";
 import imgMobile1x from "../../assets/img/authentication/iPhone_mobile@1x.png";
-import imgMobile2x from "../../assets/img/authentication/iPhone_mobile@1x.png";
+import imgMobile2x from "../../assets/img/authentication/iPhone_mobile@2x.png";
 
 import css from "./LoginPage.module.css";
 
@@ -30,11 +30,10 @@ const imageData = {
 };
 
 const LoginPage = () => {
-  console.log("RegisterReadPage, OK");
   const dispatch = useDispatch();
 
   const handleLogin = (values) => {
-    dispatch(register(values))
+    dispatch(logIn(values))
       .unwrap()
       .then(() => {
         successNotify(SUCCESS_REGISTRATION);
@@ -53,7 +52,7 @@ const LoginPage = () => {
               <Logo />
               <AuthTitle />
             </div>
-            <LoginForm handleRegister={handleLogin} />
+            <LoginForm handleLogin={handleLogin} />
           </div>
           <div className={css.imgContainer}>
             <ResponsiveImage imageData={imageData} />

@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import authReducer from "./auth/slice";
-import noticesReducer from "./notices/slice";
-import friendReducer from "./friends/slice";
-import newsReducer from "./news/slice";
-import filtersReducer from "./filters/slice";
-import favoritesReducer from "./favorites/slice";
-import citiesReducer from "./cities/slice";
+// import noticesReducer from "./notices/slice";
+// import friendReducer from "./friends/slice";
+// import newsReducer from "./news/slice";
+// import filtersReducer from "./filters/slice";
+// import favoritesReducer from "./favorites/slice";
+// import citiesReducer from "./cities/slice";
 
 import {
   persistStore,
@@ -20,7 +20,7 @@ import {
 } from "redux-persist";
 
 const authPersistConfig = {
-  key: "authPet",
+  key: "authReadJourney",
   storage,
   whitelist: ["token"],
 };
@@ -28,12 +28,12 @@ const authPersistConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    notices: noticesReducer,
-    friends: friendReducer,
-    news: newsReducer,
-    filters: filtersReducer,
-    favorites: favoritesReducer,
-    cities: citiesReducer,
+    // notices: noticesReducer,
+    // friends: friendReducer,
+    // news: newsReducer,
+    // filters: filtersReducer,
+    // favorites: favoritesReducer,
+    // cities: citiesReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

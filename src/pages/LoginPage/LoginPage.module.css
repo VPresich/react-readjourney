@@ -1,13 +1,15 @@
 .section {
-  padding: 20px;
+  width: 100%;
   background-color: var(--main-bgr);
 }
 
 .container {
   width: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin: 0 auto;
 }
 
 .formContainer {
@@ -25,6 +27,7 @@
 }
 
 .titleContainer {
+  width: 100%;
   display: flex;
   flex-direction: column;
   row-gap: 40px;
@@ -34,9 +37,7 @@
   width: 100%;
   border-radius: 30px;
   padding-top: 20px;
-  padding-top: 0;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-bottom: 0;
   height: 351px;
   border-radius: 30px;
   background: var(--secondary-color);
@@ -45,25 +46,23 @@
   align-items: center;
 }
 
-@media screen and (min-width: 375xp) {
-  .formContainer {
-    width: 335px;
-    height: 411px;
+@media screen and (min-width: 375px) {
+  .container {
+    max-width: 375px;
   }
 
-  .imgContainer {
-    width: 335px;
-    height: 351px;
+  .formContainer {
+    height: 411px;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .section {
+  .container {
+    max-width: 768px;
     padding: 32px;
   }
 
   .formContainer {
-    width: 100%;
     padding-top: 40px;
     padding-left: 64px;
     padding-right: 64px;
@@ -82,11 +81,8 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .section {
-    padding-right: 32px;
-  }
-
   .container {
+    max-width: 1440px;
     display: flex;
     flex-direction: row;
     gap: 16px;

@@ -33,5 +33,5 @@ const Button = ({
 
 export default Button;
 
-// const size = ["large", ];
+// const size = ["large", "small"];
 // const background = ["primary", "secondary", ];

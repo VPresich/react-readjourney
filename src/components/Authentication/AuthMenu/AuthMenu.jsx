@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { selectIsLoggedIn } from "../../../redux/auth/selectors";
 import AuthButton from "../AuthButton/AuthButton";
 import RegistrationButton from "../RegistrationButton/RegistrationButton";
-import UserMenu from "../UserMenu/UserMenu";
+import UserMenu from "../UserBar/UserBar";
 
 import css from "./AuthMenu.module.css";
 

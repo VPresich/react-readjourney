@@ -109,13 +109,6 @@
   right: 30px;
 }
 
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px transparent inset;
-  box-shadow: 0 0 0 1000px transparent inset;
-  -webkit-text-fill-color: var(--main-color);
-  transition: background-color 0.5s ease-in-out;
-}
-
 @media screen and (min-width: 768px) {
   .wrapper {
     padding-top: 16px;

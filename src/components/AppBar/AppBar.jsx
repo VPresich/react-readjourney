@@ -1,25 +1,14 @@
-import { useLocation } from "react-router-dom";
-import clsx from "clsx";
-import AppNav from "../AppNav/AppNav";
-import AuthMenu from "../Authentication/AuthMenu/AuthMenu";
-import MobileMenuBtn from "../Authentication/MobileMenuBtn/MobileMenuBtn";
-import LogoRead from "../LogoRead/LogoRead";
-
+import UserNav from "../Authentication/UserNav/UserNav";
+import UserBar from "../Authentication/UserBar/UserBar";
+import Logo from "../Logo/Logo";
 import css from "./AppBar.module.css";
-
 export default function AppBar() {
-  const location = useLocation();
-  const isHomePage = location.pathname === "/home";
   return (
-    <header className={clsx(css.header, isHomePage && css.home)}>
-      {/* <Logo /> */}
-
-      <LogoRead />
-
-      <AppNav />
-      <div className={css.wrapper}>
-        <AuthMenu />
-        <MobileMenuBtn />
+    <header className={css.header}>
+      <div className={css.container}>
+        <Logo />
+        <UserNav />
+        <UserBar />
       </div>
     </header>
   );
