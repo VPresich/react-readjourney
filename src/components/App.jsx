@@ -21,13 +21,58 @@ const App = () => {
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route path="recommended" element={<RecommendedPage />} />
-          <Route path="library" element={<MyLibraryPage />} />
-          <Route path="reading" element={<ReadingPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          {/* <Route path="recommended" element={<RecommendedPage />} /> */}
+          <Route
+            path="recommended"
+            element={
+              <PrivateRoute
+                redirectTo="/register"
+                component={<RecommendedPage />}
+              />
+            }
+          />
+          {/* <Route path="library" element={<MyLibraryPage />} /> */}
+
+          <Route
+            path="library"
+            element={
+              <PrivateRoute
+                redirectTo="/register"
+                component={<MyLibraryPage />}
+              />
+            }
+          />
+
+          {/* <Route path="reading" element={<ReadingPage />} /> */}
+
+          <Route
+            path="reading"
+            element={
+              <PrivateRoute
+                redirectTo="/register"
+                component={<ReadingPage />}
+              />
+            }
+          />
+
+          {/* <Route path="register" element={<RegisterPage />} /> */}
+          <Route
+            path="register"
+            element={
+              <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+            }
+          />
+
+          {/* <Route path="login" element={<LoginPage />} /> */}
+          <Route
+            path="login"
+            element={
+              <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+            }
+          />
         </Route>
+
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>
   );
