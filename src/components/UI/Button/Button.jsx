@@ -4,19 +4,14 @@ import clsx from "clsx";
 const Button = ({
   children,
   onClick,
-  size = "small",
+  size = "large",
   background = "primary",
-  uppercase = false,
-  width,
   icon = null,
   as = "button",
-  href,
+  href = "",
+  auxStyles = null,
   ...props
 }) => {
-  const style = {
-    width: width || "100%",
-  };
-
   const Component = as;
   return (
     <Component
@@ -24,9 +19,8 @@ const Button = ({
         css.btn,
         css[size],
         css[background],
-        uppercase && css.uppercase
+        auxStyles && auxStyles
       )}
-      style={style}
       onClick={onClick}
       href={href}
       {...props}
@@ -39,6 +33,5 @@ const Button = ({
 
 export default Button;
 
-// const size = ["large", "medium", "small", "sxsmall", "sxxsmall"];
-// const background = ["primary", "secondary", "transparent", "cancel", "unactive"];
-// const uppercase = true;
+// const size = ["large", ];
+// const background = ["primary", "secondary", ];

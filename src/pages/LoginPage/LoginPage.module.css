@@ -4,6 +4,7 @@
 }
 
 .container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -11,9 +12,10 @@
 
 .formContainer {
   width: 100%;
-  padding-top: 20xp;
+  padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
+  padding-bottom: 20px;
   border-radius: 30px;
   background: var(--secondary-color);
   display: flex;
@@ -36,12 +38,11 @@
   padding-left: 40px;
   padding-right: 40px;
   height: 351px;
+  border-radius: 30px;
+  background: var(--secondary-color);
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.text {
-  color: white;
 }
 
 @media screen and (min-width: 375xp) {
@@ -58,29 +59,25 @@
 
 @media screen and (min-width: 768px) {
   .section {
-    padding-top: 114px;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-bottom: 32px;
+    padding: 32px;
+  }
+
+  .formContainer {
+    width: 100%;
+    padding-top: 40px;
+    padding-left: 64px;
+    padding-right: 64px;
+    padding-bottom: 40px;
+    height: 960px;
+    row-gap: 40px;
+  }
+
+  .titleContainer {
+    row-gap: 157px;
   }
 
   .imgContainer {
     display: none;
-  }
-
-  .formContainer {
-    padding: 30px 140px;
-    width: 100%;
-    border-radius: 60px;
-    height: 560px;
-    row-gap: 16px;
-  }
-
-  .petBlock {
-    display: flex;
-    position: absolute;
-    left: 32px;
-    bottom: 32px;
   }
 }
 
@@ -89,21 +86,24 @@
     padding-right: 32px;
   }
 
-  .imgContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .container {
     display: flex;
     flex-direction: row;
-    gap: 32px;
+    gap: 16px;
+  }
+
+  .titleContainer {
+    row-gap: 107px;
+  }
+
+  .formContainer {
+    width: 50%;
+    height: 736px;
   }
 
   .imgContainer {
     width: 50%;
-    height: 654px;
+    height: 736px;
     display: flex;
     justify-content: center;
     align-items: flex-end;

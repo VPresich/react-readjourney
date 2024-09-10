@@ -1,14 +1,15 @@
 import { useState } from "react";
 import clsx from "clsx";
 import { useFormContext } from "react-hook-form";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { MdOutlineClear } from "react-icons/md";
-import { IoCheckmarkOutline } from "react-icons/io5";
+import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
+import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import checkPasswordSecurity from "../../../auxiliary/checkPasswordSecurity";
 import css from "./Input.module.css";
 
 const Input = ({
   name,
+  label,
   onChange,
   value,
   placeholder,
@@ -43,7 +44,14 @@ const Input = ({
 
   return (
     <div className={css.wrapper}>
+      {label && (
+        <label htmlFor={name} className={css.label}>
+          {label}
+        </label>
+      )}
+
       <input
+        id={name}
         name={name}
         value={value}
         onChange={onChange}
@@ -51,12 +59,13 @@ const Input = ({
         className={inputClass}
         type={inputType}
       />
+
       {type === "password" && (
         <span onClick={handleTooglePassword} className={css.icon}>
           {showPassword ? (
-            <FaEye className={css.eyeIcon} />
+            <IoEyeOutline className={css.eyeIcon} />
           ) : (
-            <FaEyeSlash className={css.eyeIcon} />
+            <IoEyeOffOutline className={css.eyeIcon} />
           )}
         </span>
       )}
@@ -66,13 +75,13 @@ const Input = ({
           onClick={handleClearInput}
           className={clsx(css.icon, type === "password" && css.shift)}
         >
-          <MdOutlineClear className={css.clearIcon} />
+          <AiOutlineExclamationCircle className={css.clearIcon} />
         </span>
       )}
 
       {isPasswordSecure && (
         <span className={clsx(css.icon, css.shift)}>
-          <IoCheckmarkOutline className={css.okIcon} />
+          <IoIosCheckmarkCircleOutline className={css.okIcon} />
         </span>
       )}
 

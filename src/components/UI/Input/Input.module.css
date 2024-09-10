@@ -1,59 +1,74 @@
 .wrapper {
+  width: 100%;
   position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 12px;
+  padding: 14px;
+  height: 44px;
+  border: 1px solid var(--control-color);
+  background-color: var(--control-color);
+  transition: border-color 1s ease-in-out;
+}
+
+.label {
+  font-family: "Gilroy", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  color: var(--inactive-color);
+
+  margin-right: 8px;
 }
 
 .input {
   width: 100%;
-  border: 1px solid rgba(38, 38, 38, 0.15);
-  border-radius: 30px;
-  padding: 12px;
-  height: 42px;
+  position: relative;
   outline: none;
-
-  font-family: "Manrope", sans-serif;
+  border: none;
+  font-family: "Gilroy", sans-serif;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 1.29;
-  letter-spacing: -0.03em;
-  color: rgba(38, 38, 38, 0.8);
-
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  color: var(--main-color);
   background-color: transparent;
-  transition: border-color 1000 ease-in-out;
 }
 
-input::placeholder {
-  color: rgba(38, 38, 38, 0.5);
+.input::placeholder {
+  color: var(--main-color);
 }
 
-.input:focus,
-.input:hover {
-  border-color: var(--orange);
+.wrapper:focus-within,
+.wrapper:hover {
+  border: 1px solid var(--border-color);
 }
 
-.input.red {
-  border-color: var(--error);
+.wrapper.red {
+  border: 1px solid var(--red-color);
 }
 
 .input.green {
-  border-color: var(--green);
+  border: 1px solid var(--green-color);
 }
 
 .message {
   position: absolute;
-  bottom: -12px;
-  left: 12px;
+  font-family: "Gilroy", sans-serif;
   font-weight: 500;
   font-size: 10px;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
+  line-height: 120%;
+  letter-spacing: -0.02em;
 }
 
 .error {
-  color: var(--error);
+  color: var(--red-color);
 }
 
 .success {
-  color: var(--green);
+  color: var(--green-color);
 }
 
 .icon {
@@ -62,51 +77,50 @@ input::placeholder {
   cursor: pointer;
   position: absolute;
   top: 50%;
-  transform: translate(-200%, -50%);
+  transform: translateY(-50%);
+  right: 10px;
 }
 
 .eyeIcon {
   width: 100%;
   height: 100%;
-  color: var(--orange);
+  color: var(--main-color);
 }
 
 .clearIcon {
   width: 100%;
   height: 100%;
-  color: var(--error);
+  color: var(--red-color);
 }
 
 .okIcon {
   cursor: default;
   width: 100%;
   height: 100%;
-  color: var(--green);
+  color: var(--green-color);
 }
 
 .icon.shift {
-  right: 10px;
+  right: 30px;
 }
 
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px transparent inset;
   box-shadow: 0 0 0 1000px transparent inset;
-  -webkit-text-fill-color: var(--orange);
-  transition: background-color 500 ease-in-out;
+  -webkit-text-fill-color: var(--main-color);
+  transition: background-color 0.5s ease-in-out;
 }
 
 @media screen and (min-width: 768px) {
-  .input {
-    padding: 16px;
-    height: 52px;
-    font-size: 16px;
-    line-height: 1.25;
-    color: rgba(38, 38, 38, 0.8);
+  .wrapper {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    height: 50px;
   }
 
   .icon {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
   }
 
   .message {

@@ -1,23 +1,17 @@
 @font-face {
-  font-family: "Manrope";
+  font-family: "Gilroy";
   font-weight: 500;
-  src: url("../../fonts/static/Manrope-Medium.ttf") format("truetype");
+  src: url("../../fonts/static/gilroy-medium.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "Manrope";
+  font-family: "SF-Pro-Display";
   font-weight: 600;
-  src: url("../../fonts/static/Manrope-SemiBold.ttf") format("truetype");
+  src: url("../../fonts/static/SF-Pro-Display-Semibold.otf") format("truetype");
 }
 
 @font-face {
-  font-family: "Manrope";
+  font-family: "Gilroy";
   font-weight: 700;
-  src: url("../../fonts/static/Manrope-Bold.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Manrope";
-  font-weight: 800;
-  src: url("../../fonts/static/Manrope-ExtraBold.ttf") format("truetype");
+  src: url("../../fonts/static/gilroy-bold.ttf") format("truetype");
 }
