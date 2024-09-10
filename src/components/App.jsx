@@ -20,8 +20,12 @@ const App = () => {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
-          {/* <Route path="recommended" element={<RecommendedPage />} /> */}
+        <Route
+          path="/"
+          element={
+            <PrivateRoute redirectTo="/register" component={<MainLayout />} />
+          }
+        >
           <Route
             path="recommended"
             element={
@@ -31,7 +35,6 @@ const App = () => {
               />
             }
           />
-          {/* <Route path="library" element={<MyLibraryPage />} /> */}
 
           <Route
             path="library"
@@ -43,8 +46,6 @@ const App = () => {
             }
           />
 
-          {/* <Route path="reading" element={<ReadingPage />} /> */}
-
           <Route
             path="reading"
             element={
@@ -54,23 +55,18 @@ const App = () => {
               />
             }
           />
-
-          {/* <Route path="register" element={<RegisterPage />} /> */}
-          <Route
-            path="register"
-            element={
-              <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
-            }
-          />
-
-          {/* <Route path="login" element={<LoginPage />} /> */}
-          <Route
-            path="login"
-            element={
-              <RestrictedRoute redirectTo="/" component={<LoginPage />} />
-            }
-          />
         </Route>
+
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
+        />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

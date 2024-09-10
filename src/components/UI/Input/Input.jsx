@@ -39,7 +39,8 @@ const Input = ({
     css.input,
     errors[name] && css.red,
     isPasswordSecure && css.green,
-    className && className
+    className && className,
+    type === "password" && css.password
   );
 
   return (

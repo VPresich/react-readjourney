@@ -28,7 +28,11 @@ const LoginForm = ({ handleLogin }) => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={css.form}
+        autoComplete="off"
+      >
         <div className={css.inputsWrapper}>
           <Controller
             name="email"
@@ -38,6 +42,7 @@ const LoginForm = ({ handleLogin }) => {
                 {...field}
                 label="Mail:"
                 placeholder="Your@email.com"
+                autoComplete="new-email"
                 type="text"
               />
             )}
@@ -51,6 +56,7 @@ const LoginForm = ({ handleLogin }) => {
                 {...field}
                 label="Password:"
                 placeholder="Yourpasswordhere"
+                autoComplete="new-password"
                 type="password"
               />
             )}

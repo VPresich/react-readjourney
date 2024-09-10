@@ -15,7 +15,6 @@
 .buttons {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   column-gap: 10px;
   align-items: center;
 }
@@ -56,7 +55,7 @@
   }
 
   .buttons {
-    row-gap: 20px;
+    column-gap: 20px;
   }
 
   .btnStyles {
@@ -66,11 +65,5 @@
   .link {
     font-size: 14px;
     line-height: 1.29;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .form {
-    row-gap: 146px;
   }
 }

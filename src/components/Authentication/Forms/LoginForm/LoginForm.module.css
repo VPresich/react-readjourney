@@ -3,20 +3,18 @@
   font-family: "Gilroy", sans-serif;
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 72px;
 }
 
 .inputsWrapper {
   display: flex;
   flex-direction: column;
   row-gap: 8px;
-  margin-bottom: 52px;
 }
 
 .buttons {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   column-gap: 10px;
   align-items: center;
 }
@@ -49,16 +47,15 @@
 
 @media screen and (min-width: 768px) {
   .form {
-    row-gap: 82px;
+    row-gap: 146px;
   }
 
   .inputsWrapper {
     row-gap: 14px;
-    margin-bottom: 106px;
   }
 
   .buttons {
-    row-gap: 20px;
+    column-gap: 20px;
   }
 
   .btnStyles {
@@ -68,11 +65,5 @@
   .link {
     font-size: 14px;
     line-height: 1.29;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .form {
-    row-gap: 146px;
   }
 }

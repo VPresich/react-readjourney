@@ -29,7 +29,11 @@ const RegisterForm = ({ handleRegister }) => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={css.form}
+        autoComplete="off"
+      >
         <div className={css.inputsWrapper}>
           <Controller
             name="name"
@@ -39,6 +43,7 @@ const RegisterForm = ({ handleRegister }) => {
                 {...field}
                 label="Name:"
                 placeholder="Ilona Ratushniak"
+                autoComplete="off"
                 type="text"
               />
             )}
@@ -52,6 +57,7 @@ const RegisterForm = ({ handleRegister }) => {
                 {...field}
                 label="Mail:"
                 placeholder="Your@email.com"
+                autoComplete="new-email"
                 type="text"
               />
             )}
@@ -65,6 +71,7 @@ const RegisterForm = ({ handleRegister }) => {
                 {...field}
                 label="Password:"
                 placeholder="Yourpasswordhere"
+                autoComplete="new-password"
                 type="password"
               />
             )}
