@@ -9,6 +9,10 @@
 .container {
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
 }
 
 @media screen and (min-width: 375px) {
@@ -27,6 +31,7 @@
 
   .container {
     max-width: 704px;
+    gap: 16px;
   }
 }
 
@@ -37,5 +42,6 @@
 
   .container {
     max-width: 1216px;
+    flex-direction: row;
   }
 }

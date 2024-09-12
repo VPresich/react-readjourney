@@ -20,14 +20,15 @@ export const getBooksPerPage = createAsyncThunk(
 
 export const getRecommendedBooks = createAsyncThunk(
   "books/recommended",
-  async ({ page, limit, query, sort }, thunkAPI) => {
+  async ({ page, limit, query }, thunkAPI) => {
+    const newQuery = { ...query };
+    delete newQuery.totalPages;
     try {
       const response = await axiosInst.get("books/recommend", {
         params: {
           page,
           limit,
-          ...query,
-          ...sort,
+          ...newQuery,
         },
       });
       return response.data;

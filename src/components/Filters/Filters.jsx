@@ -6,7 +6,7 @@ import { feedbackSchema } from "./feedbackScema";
 import { saveQuery } from "../../redux/filters/slice";
 import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";
-import css from "./BookFilters.module.css";
+import css from "./Filters.module.css";
 
 const BookFilters = () => {
   const methods = useForm({
@@ -14,7 +14,7 @@ const BookFilters = () => {
     defaultValues: {
       title: "",
       author: "",
-      pages: 0,
+      totalPages: 0,
     },
   });
 
@@ -24,7 +24,6 @@ const BookFilters = () => {
   const isShowPagesInput = location.pathname !== "/recommended";
 
   const onSubmit = (values) => {
-    console.log("Filters", values);
     dispatch(saveQuery(values));
   };
 
@@ -36,6 +35,8 @@ const BookFilters = () => {
         autoComplete="off"
       >
         <div className={css.inputsWrapper}>
+          <h3 className={css.title}>Filters:</h3>
+
           <Controller
             name="title"
             control={methods.control}
@@ -64,7 +65,7 @@ const BookFilters = () => {
           />
           {isShowPagesInput && (
             <Controller
-              name="pages"
+              name="totalPages"
               control={methods.control}
               render={({ field }) => (
                 <Input
@@ -79,7 +80,7 @@ const BookFilters = () => {
           )}
         </div>
 
-        <Button type="submit" auxStyles={css.btnStyles}>
+        <Button type="submit" background="secondary" auxStyles={css.btnStyles}>
           To apply
         </Button>
       </form>

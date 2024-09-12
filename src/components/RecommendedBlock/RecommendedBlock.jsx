@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getBooksPerPage } from "../../redux/books/operations";
+import { getRecommendedBooks } from "../../redux/books/operations";
 import Loader from "../../components/UI/Loader/Loader";
 import {
   selectIsLoading,
@@ -32,10 +32,10 @@ const RecommendedBlock = () => {
 
   useEffect(() => {
     dispatch(
-      getBooksPerPage({
+      getRecommendedBooks({
         page: currentPage,
         limit: itemsPerPage,
-        // query: query,
+        query: query,
       })
     )
       .unwrap(() => {

@@ -6,6 +6,15 @@
   row-gap: 20px;
 }
 
+.title {
+  padding-left: 14px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: var(--main-color);
+}
+
 .inputsWrapper {
   display: flex;
   flex-direction: column;
@@ -13,22 +22,13 @@
 }
 
 .btnStyles {
-  width: 140px;
+  width: 98px;
+  height: 38px;
 }
 
 @media screen and (min-width: 375px) {
-}
-
-@media screen and (min-width: 768px) {
-  .form {
-    row-gap: 82px;
-  }
-
-  .inputsWrapper {
-    row-gap: 14px;
-  }
-
   .btnStyles {
-    width: 225px;
+    width: 122px;
+    height: 42px;
   }
 }
