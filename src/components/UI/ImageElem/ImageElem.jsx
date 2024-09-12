@@ -1,21 +1,9 @@
-import clsx from "clsx";
 import css from "./ImageElem.module.css";
-
-const ImageElem = ({
-  imgUrl,
-  altText = "",
-  containerClass = null,
-  detail = "",
-  detailClass = "",
-}) => {
+const ImageElem = ({ imgUrl, altText = "" }) => {
   return (
-    <div className={clsx(css.container, containerClass && containerClass)}>
+    <div className={css.container}>
       <img className={css.img} src={imgUrl} alt={`Photo of ${altText}`} />
-      {detail && (
-        <span className={clsx(css.detail, detailClass && detailClass)}>
-          {detail}
-        </span>
-      )}
+      <div className={css.darkened}></div>
     </div>
   );
 };

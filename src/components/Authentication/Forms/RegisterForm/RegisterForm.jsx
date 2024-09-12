@@ -20,8 +20,7 @@ const RegisterForm = ({ handleRegister }) => {
   const { handleSubmit } = methods;
 
   const onSubmit = async (values) => {
-    try {
-      console.log("onSubmit", values);
+    try {     
       await handleRegister(values);
     } catch (error) {
       errNotify(error.message);

@@ -19,7 +19,7 @@
   line-height: 1.33;
   letter-spacing: -0.02em;
   color: var(--inactive-color);
-
+  white-space: nowrap;
   margin-right: 8px;
 }
 

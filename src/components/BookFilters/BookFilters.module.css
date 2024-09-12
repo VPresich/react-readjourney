@@ -1,0 +1,34 @@
+.form {
+  width: 100%;
+  font-family: "Gilroy", sans-serif;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.inputsWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.btnStyles {
+  width: 140px;
+}
+
+@media screen and (min-width: 375px) {
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    row-gap: 82px;
+  }
+
+  .inputsWrapper {
+    row-gap: 14px;
+  }
+
+  .btnStyles {
+    width: 225px;
+  }
+}

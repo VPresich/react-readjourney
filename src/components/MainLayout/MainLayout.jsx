@@ -6,6 +6,7 @@ import { selectIsRefreshing } from "../../redux/auth/selectors";
 
 import AppBar from "../AppBar/AppBar";
 import Loader from "../../components/UI/Loader/Loader";
+import css from "./MainLayout.module.css";
 
 const MainLayout = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -18,8 +19,11 @@ const MainLayout = () => {
         <React.Fragment>
           <AppBar />
           <main>
-            <p>Main Layout</p>
-            <Outlet />
+            <div className={css.section}>
+              <div className={css.container}>
+                <Outlet />
+              </div>
+            </div>
           </main>
           <Toaster position="top-right" reverseOrder={false} />
         </React.Fragment>

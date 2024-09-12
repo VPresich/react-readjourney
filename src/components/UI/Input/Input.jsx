@@ -47,7 +47,7 @@ const Input = ({
     <div className={css.wrapper}>
       {label && (
         <label htmlFor={name} className={css.label}>
-          {label}
+          <span>{label}</span>
         </label>
       )}
 

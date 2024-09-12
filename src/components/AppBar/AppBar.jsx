@@ -1,15 +1,43 @@
+import { useRef, useEffect } from "react";
 import UserNav from "../Authentication/UserNav/UserNav";
 import UserBar from "../Authentication/UserBar/UserBar";
 import Logo from "../Logo/Logo";
 import css from "./AppBar.module.css";
-export default function AppBar() {
+
+const AppBar = () => {
+  const headerRef = useRef(null);
+  const containerRef = useRef(null); // Ссылка на контейнер
+
+  const handleScroll = () => {
+    if (headerRef.current && containerRef.current) {
+      const scrollPos = window.scrollY;
+      if (scrollPos > 50) {
+        headerRef.current.classList.add(css.onscroll);
+        containerRef.current.classList.add(css.onscroll);
+      } else {
+        headerRef.current.classList.remove(css.onscroll);
+        containerRef.current.classList.remove(css.onscroll);
+      }
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className={css.header}>
-      <div className={css.container}>
+    <header ref={headerRef} className={css.header}>
+      <div ref={containerRef} className={css.container}>
         <Logo />
-        <UserNav />
-        <UserBar />
+        <div className={css.navWrapper}>
+          <UserNav />
+          <UserBar />
+        </div>
       </div>
     </header>
   );
-}
+};
+
+export default AppBar;

@@ -23,8 +23,8 @@
 }
 
 .letter {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   background-color: var(--control-color);
   border: 1px solid rgba(249, 249, 249, 0.2);
@@ -40,9 +40,15 @@
 }
 
 @media screen and (min-width: 768px) {
+  .letter {
+    width: 40px;
+    height: 40px;
+  }
+
   .container {
     column-gap: 16px;
   }
+
   .logoutWrapper {
     display: none;
   }

@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import LogoutButton from "../LogoutButton/LogoutButton";
 import MobileMenuBtn from "../MobileMenuBtn/MobileMenuBtn";
+import { firstLetter } from "../../../auxiliary/formats";
 import {
   selectIsLoggedIn,
   selectUserName,
@@ -16,7 +17,7 @@ const UserBar = () => {
   return (
     <div className={css.container}>
       <div className={css.userNameContainer}>
-        <span className={css.letter}>I</span>
+        <span className={css.letter}>{firstLetter(userName[0])}</span>
         <span className={css.userName}>{userName}</span>
       </div>
       <div className={css.logoutWrapper}>

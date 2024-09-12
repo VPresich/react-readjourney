@@ -39,6 +39,8 @@ const authSlice = createSlice({
       .addCase(register.rejected, (state, action) => {
         state.error = action.payload;
       })
+
+      //-------------------------------------------------
       .addCase(logIn.pending, (state) => {
         state.error = null;
         state.isLoggedIn = false;
@@ -53,6 +55,8 @@ const authSlice = createSlice({
       .addCase(logIn.rejected, (state, action) => {
         state.error = action.payload;
       })
+
+      //-------------------------------------------------
       .addCase(logOut.pending, (state) => {
         state.error = null;
       })
@@ -63,9 +67,13 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(logOut.rejected, (state, action) => {
-        state.error = action.payload;
+        state.user = { name: null, email: null };
+        state.token = null;
+        state.isLoggedIn = false;
+        state.error = action.payload || null;
       })
       //-------------------------------------------------
+
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
         state.isLoggedIn = false;

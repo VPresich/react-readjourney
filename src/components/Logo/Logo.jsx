@@ -1,8 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import clsx from "clsx";
 import iconsPath from "../../assets/img/icons.svg";
 import css from "./Logo.module.css";
 
 const Logo = () => {
+  const location = useLocation();
+  const unDisplayText =
+    location.pathname === "/recommended" || location.pathname == "/library";
   return (
     <Link to="/" className={css.link}>
       <div className={css.iconContainer}>
@@ -10,7 +14,9 @@ const Logo = () => {
           <use href={`${iconsPath}#icon-logo`} />
         </svg>
       </div>
-      <span className={css.logoText}>read journey</span>
+      <span className={clsx(css.logoText, unDisplayText && css.noDisplay)}>
+        read journey
+      </span>
     </Link>
   );
 };
