@@ -14,7 +14,7 @@ const MobileMenuContent = ({ onMenuClick }) => {
           Home
         </NavLink>
         <NavLink className={classItem} to="/library" onClick={onMenuClick}>
-          My labrary
+          My library
         </NavLink>
       </nav>
       <div className={css.outputWrapper}>

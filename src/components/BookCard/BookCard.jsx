@@ -1,4 +1,5 @@
 import { useState } from "react";
+import clsx from "clsx";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import ImageElem from "../UI/ImageElem/ImageElem";
@@ -16,12 +17,12 @@ import {
 } from "../../auxiliary/notification/notification";
 import css from "./BookCard.module.css";
 
-const BookCard = ({ book }) => {
+const BookCard = ({ book, small = false }) => {
   const { _id, title, author, imageUrl } = book;
   const [showBookModal, setShowBookModal] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
-  const isLibrary = location.pathname !== "/library";
+  const isLibrary = location.pathname === "/library";
 
   const handleBookModaleClose = () => {
     setShowBookModal(false);
@@ -43,8 +44,10 @@ const BookCard = ({ book }) => {
     handleBookModaleClose();
   };
 
-  const handleDelete = () => {
-    dispatch(removeBook(_id))
+  const handleDelete = (id) => {
+    console.log("id: ", id);
+    dispatch(removeBook(id))
+      .unwrap()
       .then(() => {
         successNotify("Success remove book");
       })
@@ -54,18 +57,29 @@ const BookCard = ({ book }) => {
   };
 
   return (
-    <div className={css.container}>
+    <div className={clsx(css.container, small && css.small)}>
       <ImageElem
         imgUrl={imageUrl}
         altText={title}
         onClick={handleBookModaleOpen}
+        auxStyles={small ? "third" : ""}
       />
       <div className={css.wrapper}>
         <div className={css.infoContainer}>
-          <EllipsisText text={title} maxLines={1} className={css.title} />
+          <EllipsisText
+            text={title}
+            maxLines={1}
+            className={clsx(css.title, small && css.small)}
+          />
           <p className={css.author}>{author}</p>
         </div>
-        {isLibrary && <DeleteButton handleClick={handleDelete} />}
+        {isLibrary && !small && (
+          <DeleteButton
+            handleClick={() => {
+              small ? null : handleDelete(_id);
+            }}
+          />
+        )}
       </div>
       {showBookModal && (
         <ModalWrapper onClose={handleBookModaleClose}>

@@ -9,7 +9,7 @@ const BookModal = ({ book, handleAddBook }) => {
   return (
     <div className={css.container}>
       <div className={css.content}>
-        <ImageElem imgUrl={imageUrl} altText="Book" secondary={true} />
+        <ImageElem imgUrl={imageUrl} altText="Book" auxStyles="secondary" />
         <div className={css.info}>
           <EllipsisText text={title} maxLines={1} className={css.title} />
           <p className={css.author}>{author}</p>

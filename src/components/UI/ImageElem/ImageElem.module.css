@@ -15,6 +15,11 @@
   height: 213px;
 }
 
+.container.third {
+  width: 71px;
+  height: 107px;
+}
+
 .img {
   border-radius: 8px;
   width: 100%;

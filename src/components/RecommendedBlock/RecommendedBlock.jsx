@@ -31,6 +31,7 @@ const RecommendedBlock = () => {
   console.log("query", query);
 
   useEffect(() => {
+    console.log("Recommended block");
     dispatch(
       getRecommendedBooks({
         page: currentPage,

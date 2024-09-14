@@ -3,7 +3,12 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { feedbackSchema } from "./feedbackScema";
+import { addBook } from "../../redux/favorites/operations";
 import { saveQuery } from "../../redux/filters/slice";
+import {
+  successNotify,
+  errNotify,
+} from "../../auxiliary/notification/notification";
 import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";
 import css from "./Filters.module.css";
@@ -14,17 +19,27 @@ const BookFilters = () => {
     defaultValues: {
       title: "",
       author: "",
-      totalPages: 0,
+      totalPages: "",
     },
   });
 
   const { handleSubmit } = methods;
   const dispatch = useDispatch();
   const location = useLocation();
-  const isShowPagesInput = location.pathname !== "/recommended";
+  const isAddedBook = location.pathname === "/library";
 
   const onSubmit = (values) => {
-    dispatch(saveQuery(values));
+    if (isAddedBook) {
+      dispatch(addBook(values))
+        .unwrap(() => {
+          successNotify("Succes add user book");
+        })
+        .catch(() => {
+          errNotify("Error adding user book");
+        });
+    } else {
+      dispatch(saveQuery(values));
+    }
   };
 
   return (
@@ -63,7 +78,7 @@ const BookFilters = () => {
               />
             )}
           />
-          {isShowPagesInput && (
+          {isAddedBook && (
             <Controller
               name="totalPages"
               control={methods.control}
@@ -71,7 +86,7 @@ const BookFilters = () => {
                 <Input
                   {...field}
                   label="Number of pages:"
-                  placeholder="664"
+                  placeholder="654"
                   autoComplete="off"
                   type="text"
                 />
@@ -81,7 +96,7 @@ const BookFilters = () => {
         </div>
 
         <Button type="submit" background="secondary" auxStyles={css.btnStyles}>
-          To apply
+          {isAddedBook ? "Add book" : "To apply"}
         </Button>
       </form>
     </FormProvider>

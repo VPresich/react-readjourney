@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 // import { logOut } from "../auth/operations";
-import { addBookFromRecommend, removeBook } from "../favorites/operations";
+import {
+  addBookFromRecommend,
+  removeBook,
+  getUserBooks,
+  addBook,
+} from "../favorites/operations";
 
 const librarySlice = createSlice({
   name: "library",
@@ -12,6 +17,7 @@ const librarySlice = createSlice({
     // isLoading: false,
     isAdding: false,
     isDeleting: false,
+    isLoading: false,
     error: null,
   },
   // reducers: {
@@ -80,6 +86,29 @@ const librarySlice = createSlice({
       })
 
       // ---------------------------------------------
+      .addCase(addBook.pending, (state) => {
+        state.isAdding = true;
+        state.error = null;
+      })
+      .addCase(addBook.fulfilled, (state, action) => {
+        state.isAdding = false;
+        state.error = false;
+
+        console.log(action.payload);
+
+        const bookExists = state.items.find(
+          (book) => book._id === action.payload._id
+        );
+        if (!bookExists) {
+          state.items.push(action.payload);
+        }
+      })
+      .addCase(addBook.rejected, (state, action) => {
+        state.isAdding = false;
+        state.error = action.payload;
+      })
+
+      // ---------------------------------------------
       .addCase(removeBook.pending, (state, action) => {
         state.isDeleting = action.meta.arg;
         state.error = null;
@@ -94,10 +123,24 @@ const librarySlice = createSlice({
       .addCase(removeBook.rejected, (state, action) => {
         state.isDeleting = false;
         state.error = action.payload;
-      });
-    //-------------------------------------------
+      })
+      //-------------------------------------------
 
+      .addCase(getUserBooks.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getUserBooks.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
+      })
+      .addCase(getUserBooks.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
     //---------------------------------------------
+
     //   .addCase(removeFavorite.pending, (state, action) => {
     //     state.isDeleting = action.meta.arg;
     //     state.error = null;

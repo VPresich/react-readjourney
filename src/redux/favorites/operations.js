@@ -15,6 +15,20 @@ export const addBookFromRecommend = createAsyncThunk(
   }
 );
 
+export const addBook = createAsyncThunk(
+  "books/addBook",
+  async (data, thunkAPI) => {
+    console.log("Add book", data);
+    try {
+      const response = await axiosInst.post("books/add", data);
+      console.log("response.data", response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const removeBook = createAsyncThunk(
   "books/removeBook",
   async (id, thunkAPI) => {
@@ -29,9 +43,9 @@ export const removeBook = createAsyncThunk(
 
 export const getUserBooks = createAsyncThunk(
   "books/getUserBook",
-  async (id, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      const response = await axiosInst.delete(`books/remove/${id}`);
+      const response = await axiosInst.get(`books/own`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

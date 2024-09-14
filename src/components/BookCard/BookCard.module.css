@@ -6,6 +6,10 @@
   flex-shrink: 0;
 }
 
+.container.small {
+  width: 71px;
+}
+
 .infoContainer {
   width: 100%;
   display: flex;
@@ -23,8 +27,13 @@
   color: var(--main-color);
 }
 
+.title.small {
+  font-size: 10px;
+  line-height: 1.2;
+  color: var(--card-color);
+}
+
 .author {
-  font-family: var(--font-family);
   font-weight: 500;
   font-size: 10px;
   line-height: 1.2;

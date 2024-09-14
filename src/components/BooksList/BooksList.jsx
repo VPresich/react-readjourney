@@ -1,12 +1,13 @@
+import clsx from "clsx";
 import BookCard from "../../components/BookCard/BookCard";
 import css from "./BooksList.module.css";
 
-const BooksList = ({ books }) => {
+const BooksList = ({ books, small = false }) => {
   return (
-    <ul className={css.container}>
+    <ul className={clsx(css.container, small && css.small)}>
       {books.map((book) => (
         <li key={book._id}>
-          <BookCard book={book} />
+          <BookCard book={book} small={small} />
         </li>
       ))}
     </ul>

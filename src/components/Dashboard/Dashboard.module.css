@@ -17,6 +17,7 @@
 
 @media screen and (min-width: 768px) {
   .container {
+    max-width: 704px;
     flex-direction: row;
     gap: 32px;
     height: 336px;
@@ -26,9 +27,14 @@
 
 @media screen and (min-width: 1440px) {
   .container {
+    max-width: 353px;
     flex-direction: column;
     height: 651px;
     padding: 20px;
-    gap: 16px;
+    gap: 40px;
+  }
+
+  .container.library {
+    gap: 78px;
   }
 }
