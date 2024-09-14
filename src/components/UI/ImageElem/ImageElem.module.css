@@ -5,10 +5,14 @@
   height: 208px;
   display: flex;
   justify-content: center;
-
   background-color: transparent;
   overflow: hidden;
   flex-shrink: 0;
+}
+
+.container.secondary {
+  width: 140px;
+  height: 213px;
 }
 
 .img {
@@ -36,4 +40,8 @@
 }
 
 @media screen and (min-width: 768px) {
+  .container.secondary {
+    width: 153px;
+    height: 233px;
+  }
 }

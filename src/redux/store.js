@@ -5,7 +5,7 @@ import booksReducer from "./books/slice";
 // import friendReducer from "./friends/slice";
 // import newsReducer from "./news/slice";
 import filtersReducer from "./filters/slice";
-// import favoritesReducer from "./favorites/slice";
+import favoritesReducer from "./favorites/slice";
 // import citiesReducer from "./cities/slice";
 
 import {
@@ -32,7 +32,7 @@ const store = configureStore({
     // friends: friendReducer,
     // news: newsReducer,
     filters: filtersReducer,
-    // favorites: favoritesReducer,
+    favorites: favoritesReducer,
     // cities: citiesReducer,
   },
 
