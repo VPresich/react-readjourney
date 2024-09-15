@@ -2,11 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import authReducer from "./auth/slice";
 import booksReducer from "./books/slice";
-// import friendReducer from "./friends/slice";
-// import newsReducer from "./news/slice";
 import filtersReducer from "./filters/slice";
-import favoritesReducer from "./favorites/slice";
-// import citiesReducer from "./cities/slice";
+import libraryReducer from "./library/slice";
 
 import {
   persistStore,
@@ -29,11 +26,8 @@ const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     books: booksReducer,
-    // friends: friendReducer,
-    // news: newsReducer,
     filters: filtersReducer,
-    favorites: favoritesReducer,
-    // cities: citiesReducer,
+    library: libraryReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

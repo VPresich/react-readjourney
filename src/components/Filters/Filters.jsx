@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { feedbackSchema } from "./feedbackScema";
-import { addBook } from "../../redux/favorites/operations";
+import { addBook } from "../../redux/library/operations";
 import { saveQuery } from "../../redux/filters/slice";
 import {
   successNotify,

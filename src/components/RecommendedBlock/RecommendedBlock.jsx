@@ -28,10 +28,8 @@ const RecommendedBlock = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const query = useSelector(selectQuery);
-  console.log("query", query);
 
   useEffect(() => {
-    console.log("Recommended block");
     dispatch(
       getRecommendedBooks({
         page: currentPage,
@@ -39,7 +37,8 @@ const RecommendedBlock = () => {
         query: query,
       })
     )
-      .unwrap(() => {
+      .unwrap()
+      .then(() => {
         successNotify("Succes fetch books");
       })
       .catch(() => {

@@ -6,11 +6,12 @@ import ImageElem from "../UI/ImageElem/ImageElem";
 import EllipsisText from "../UI/EllipsisText/EllipsisText";
 import ModalWrapper from "../UI/ModalWrapper/ModalWrapper";
 import BookModal from "../BookModal/BookModal";
+import ApproveAddModal from "../ApproveAddModal/ApproveAddModal";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import {
   addBookFromRecommend,
   removeBook,
-} from "../../redux/favorites/operations";
+} from "../../redux/library/operations";
 import {
   successNotify,
   errNotify,
@@ -20,6 +21,8 @@ import css from "./BookCard.module.css";
 const BookCard = ({ book, small = false }) => {
   const { _id, title, author, imageUrl } = book;
   const [showBookModal, setShowBookModal] = useState(false);
+  const [showApproveAddModal, setApproveAddModal] = useState(false);
+
   const dispatch = useDispatch();
   const location = useLocation();
   const isLibrary = location.pathname === "/library";
@@ -27,15 +30,24 @@ const BookCard = ({ book, small = false }) => {
   const handleBookModaleClose = () => {
     setShowBookModal(false);
   };
+
   const handleBookModaleOpen = () => {
-    console.log("handleBookModaleOpen");
     setShowBookModal(true);
+  };
+
+  const handleApproveAddModalClose = () => {
+    setApproveAddModal(false);
+  };
+
+  const handleApproveAddModalOpen = () => {
+    setApproveAddModal(true);
   };
 
   const handleAddBook = () => {
     dispatch(addBookFromRecommend(_id))
       .unwrap()
       .then(() => {
+        handleApproveAddModalOpen();
         successNotify("Success added book");
       })
       .catch(() => {
@@ -45,10 +57,11 @@ const BookCard = ({ book, small = false }) => {
   };
 
   const handleDelete = (id) => {
-    console.log("id: ", id);
+    console.log("handleDelete id: ", id);
     dispatch(removeBook(id))
       .unwrap()
-      .then(() => {
+      .then((data) => {
+        console.log("My library - books", data);
         successNotify("Success remove book");
       })
       .catch(() => {
@@ -84,6 +97,11 @@ const BookCard = ({ book, small = false }) => {
       {showBookModal && (
         <ModalWrapper onClose={handleBookModaleClose}>
           <BookModal book={book} handleAddBook={handleAddBook}></BookModal>
+        </ModalWrapper>
+      )}
+      {showApproveAddModal && (
+        <ModalWrapper onClose={handleApproveAddModalClose}>
+          <ApproveAddModal />
         </ModalWrapper>
       )}
     </div>

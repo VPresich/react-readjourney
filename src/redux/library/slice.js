@@ -5,7 +5,7 @@ import {
   removeBook,
   getUserBooks,
   addBook,
-} from "../favorites/operations";
+} from "./operations";
 
 const librarySlice = createSlice({
   name: "library",
@@ -13,8 +13,6 @@ const librarySlice = createSlice({
     items: [],
     // favorites: [],
     // myBooks: [],
-    // viewedPets: [],
-    // isLoading: false,
     isAdding: false,
     isDeleting: false,
     isLoading: false,
@@ -109,13 +107,13 @@ const librarySlice = createSlice({
       })
 
       // ---------------------------------------------
-      .addCase(removeBook.pending, (state, action) => {
-        state.isDeleting = action.meta.arg;
+      .addCase(removeBook.pending, (state) => {
+        state.isDeleting = true;
         state.error = null;
       })
       .addCase(removeBook.fulfilled, (state, action) => {
         state.items = state.items.filter(
-          (item) => item._id !== action.payload.item._id
+          (item) => item._id !== action.payload.id
         );
         state.isDeleting = false;
         state.error = null;

@@ -1,14 +1,14 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserBooks } from "../../redux/favorites/operations";
+import { getUserBooks } from "../../redux/library/operations";
 import Loader from "../../components/UI/Loader/Loader";
 import MyLibraryEmpty from "../MyLibraryEmpty/MyLibraryEmpty";
 import {
   selectIsLoading,
   selectError,
   selectOwnBooks,
-} from "../../redux/favorites/selectors";
+} from "../../redux/library/selectors";
 import {
   errNotify,
   successNotify,
@@ -19,15 +19,14 @@ import css from "./MyLibraryBlock.module.css";
 const MyLibraryBlock = () => {
   const dispatch = useDispatch();
   const books = useSelector(selectOwnBooks);
-  console.log("MyLibraryBlock:", books);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  console.log("My library - books", books);
 
   useEffect(() => {
-    dispatch(getUserBooks({}))
+    dispatch(getUserBooks())
       .unwrap()
-      .then(() => {
+      .then((data) => {
+        console.log(data);
         successNotify("Succes fetch library");
       })
       .catch(() => {

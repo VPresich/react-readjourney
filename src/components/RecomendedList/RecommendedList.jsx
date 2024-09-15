@@ -30,7 +30,8 @@ const RecommendedList = () => {
         limit: 3,
       })
     )
-      .unwrap(() => {
+      .unwrap()
+      .then(() => {
         successNotify("Succes fetch books");
       })
       .catch(() => {
