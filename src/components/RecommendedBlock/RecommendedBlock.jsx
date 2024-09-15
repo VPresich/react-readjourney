@@ -28,6 +28,7 @@ const RecommendedBlock = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const query = useSelector(selectQuery);
+  console.log("query", query);
 
   useEffect(() => {
     dispatch(

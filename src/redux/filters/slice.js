@@ -6,7 +6,6 @@ const filtersSlice = createSlice({
     query: {
       title: "",
       author: "",
-      totalPages: "",
     },
   },
   reducers: {
@@ -19,7 +18,6 @@ const filtersSlice = createSlice({
       state.query = {
         title: "",
         author: "",
-        totalPages: "",
       };
     },
   },
