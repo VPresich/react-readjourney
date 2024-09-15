@@ -1,13 +1,16 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getRecommendedBooks } from "../../redux/books/operations";
+import { setPage } from "../../redux/books/slice";
 import Loader from "../../components/UI/Loader/Loader";
+import PaginationBlock from "../UI/PaginationBlock/PaginationBlock";
 import {
   selectIsLoading,
   selectBooks,
   selectCurrentBooksPage,
   selectBooksPerPage,
+  selectTotalPages,
 } from "../../redux/books/selectors";
 import { selectQuery } from "../../redux/filters/selectors";
 import {
@@ -24,6 +27,7 @@ const RecommendedBlock = () => {
   const books = useSelector(selectBooks);
 
   const currentPage = useSelector(selectCurrentBooksPage);
+  const totalPages = useSelector(selectTotalPages);
   const itemsPerPage = useSelector(selectBooksPerPage);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -47,13 +51,29 @@ const RecommendedBlock = () => {
       });
   }, [dispatch, currentPage, itemsPerPage, query]);
 
+  const handleLoadPage = useCallback(
+    (page) => {
+      if (page !== currentPage) {
+        dispatch(setPage(page));
+      }
+    },
+    [dispatch, currentPage]
+  );
+
   return (
     <div className={css.container}>
       {isLoading ? (
         <Loader />
       ) : (
         <React.Fragment>
-          <p className={css.title}>Recommended</p>
+          <div className={css.firstLine}>
+            <p className={css.title}>Recommended</p>
+            <PaginationBlock
+              totalPages={totalPages}
+              currentPage={currentPage}
+              onClick={handleLoadPage}
+            />
+          </div>
           {!error && books && books.length > 0 ? (
             <BooksList books={books} />
           ) : (

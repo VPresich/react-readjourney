@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { getBooksPerPage } from "../../redux/books/operations";
+import { useSelector } from "react-redux";
 import Loader from "../UI/Loader/Loader";
 import iconsPath from "../../assets/img/icons.svg";
 import BooksList from "../BooksList/BooksList";
@@ -10,34 +9,13 @@ import {
   selectBooks,
   selectError,
 } from "../../redux/books/selectors";
-import {
-  successNotify,
-  errNotify,
-} from "../../auxiliary/notification/notification";
 
 import css from "./RecommendedList.module.css";
 
 const RecommendedList = () => {
-  const dispatch = useDispatch();
   const books = useSelector(selectBooks);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-
-  useEffect(() => {
-    dispatch(
-      getBooksPerPage({
-        page: 1,
-        limit: 3,
-      })
-    )
-      .unwrap()
-      .then(() => {
-        successNotify("Succes fetch books");
-      })
-      .catch(() => {
-        errNotify("Error fetching books");
-      });
-  }, [dispatch]);
 
   return (
     <div className={css.container}>
@@ -48,7 +26,7 @@ const RecommendedList = () => {
           <p className={css.title}>Recommended books</p>
           <div className={css.listContainer}>
             {!error && books && books.length > 0 ? (
-              <BooksList books={books} small={true} />
+              <BooksList books={books} small={true} maxElem={3} />
             ) : (
               <p className={css.error}>Books not found</p>
             )}

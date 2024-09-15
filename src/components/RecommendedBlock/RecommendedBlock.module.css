@@ -19,6 +19,13 @@
   color: var(--main-color);
 }
 
+.firstLine {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .error {
   font-weight: 500;
   font-size: 16px;

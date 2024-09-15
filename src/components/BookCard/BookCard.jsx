@@ -32,6 +32,7 @@ const BookCard = ({ book, small = false }) => {
   };
 
   const handleBookModaleOpen = () => {
+    if (isLibrary) return;
     setShowBookModal(true);
   };
 

@@ -6,7 +6,6 @@ import css from "./PaginationButton.module.css";
 const PaginationButton = ({
   text = "",
   iconId = "",
-  transform = 0,
   isButton = true,
   isActive = false,
   disabled = false,
@@ -23,12 +22,6 @@ const PaginationButton = ({
           {iconId ? (
             <svg className={clsx(css.icon)} aria-label={`Icons ${iconId}`}>
               <use href={`${iconsPath}#${iconId}`} />
-              {transform && (
-                <use
-                  href={`${iconsPath}#${iconId}`}
-                  transform={`translate(${Number(transform)}, 0)`}
-                />
-              )}
             </svg>
           ) : (
             text

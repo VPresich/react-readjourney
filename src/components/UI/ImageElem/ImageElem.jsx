@@ -5,7 +5,7 @@ import img2x from "../../../assets/img/book/library_bookCover@2x.png";
 
 const ImageElem = ({ imgUrl, altText = "", auxStyles = "", onClick }) => {
   const handleClick = () => {
-    if (onClick) onClick();
+    onClick && onClick();
   };
   return (
     <div
