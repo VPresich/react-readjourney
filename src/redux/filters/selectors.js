@@ -18,3 +18,5 @@ export const selectQuery = createSelector([selectFilters], (filters) => {
     return acc;
   }, {});
 });
+
+export const selectBooksStatus = (state) => state.filters.library.status;

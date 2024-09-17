@@ -9,21 +9,21 @@ const DropDownSelector = ({
   selectedOption,
   onChange,
   formControl,
-  className = null,
+  className,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOnChange = (event) => {
     const selectedValue = event.target.value;
-    const normalizedValue = selectedValue.toLowerCase();
-    if (onChange) onChange(normalizedValue);
-    if (formControl && formControl.onChange)
-      formControl.onChange(normalizedValue);
+    if (onChange) onChange(selectedValue);
+    if (formControl && formControl.onChange) {
+      formControl.onChange(selectedValue);
+    }
     setIsOpen(false);
   };
 
   return (
-    <div className={clsx(css.container, className && className)}>
+    <div className={clsx(css.container, className)}>
       <button
         type="button"
         className={clsx(css.btn, { [css.open]: isOpen })}
@@ -44,16 +44,16 @@ const DropDownSelector = ({
                 key={index}
                 className={clsx(css.option, {
                   [css.selected]:
-                    selectedOption.toLowerCase() === option.toLowerCase(),
+                    selectedOption?.toLowerCase() === option.toLowerCase(),
                   [css.inactive]:
-                    selectedOption.toLowerCase() !== option.toLowerCase(),
+                    selectedOption?.toLowerCase() !== option.toLowerCase(),
                 })}
               >
                 <input
                   type="radio"
                   value={option}
                   checked={
-                    selectedOption.toLowerCase() === option.toLowerCase()
+                    selectedOption?.toLowerCase() === option.toLowerCase()
                   }
                   onChange={handleOnChange}
                 />

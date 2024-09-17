@@ -11,22 +11,12 @@
   gap: 34px;
 }
 
-.titleWrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .title {
   font-weight: 700;
   font-size: 20px;
   line-height: 1;
   letter-spacing: -0.02em;
   color: var(--main-color);
-}
-
-.filterContainer {
-  width: 120px;
 }
 
 @media screen and (min-width: 375px) {
@@ -42,10 +32,6 @@
     padding-right: 40px;
     width: 704px;
     height: 663px;
-  }
-
-  .filterContainer {
-    width: 153px;
   }
 }
 

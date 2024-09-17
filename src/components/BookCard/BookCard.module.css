@@ -10,6 +10,14 @@
   width: 71px;
 }
 
+.container.middle {
+  width: 140px;
+}
+
+.container.large {
+  width: 137px;
+}
+
 .infoContainer {
   width: 100%;
   display: flex;
@@ -49,7 +57,11 @@
 }
 
 @media screen and (min-width: 768px) {
-}
+  .container.middle {
+    width: 153px;
+  }
 
-@media screen and (min-width: 1440px) {
+  .container.large {
+    width: 169px;
+  }
 }

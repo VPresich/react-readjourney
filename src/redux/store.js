@@ -4,6 +4,7 @@ import authReducer from "./auth/slice";
 import booksReducer from "./books/slice";
 import filtersReducer from "./filters/slice";
 import libraryReducer from "./library/slice";
+import readingReducer from "./reading/slice";
 
 import {
   persistStore,
@@ -28,6 +29,7 @@ const store = configureStore({
     books: booksReducer,
     filters: filtersReducer,
     library: libraryReducer,
+    reading: readingReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

@@ -10,14 +10,19 @@
   flex-shrink: 0;
 }
 
-.container.secondary {
+.container.middle {
   width: 140px;
   height: 213px;
 }
 
-.container.third {
+.container.small {
   width: 71px;
   height: 107px;
+}
+
+.container.large {
+  width: 137px;
+  height: 208px;
 }
 
 .img {
@@ -45,8 +50,13 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container.secondary {
+  .container.middle {
     width: 153px;
     height: 233px;
+  }
+
+  .container.large {
+    width: 169px;
+    height: 256px;
   }
 }

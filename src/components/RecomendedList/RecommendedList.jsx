@@ -26,7 +26,7 @@ const RecommendedList = () => {
           <p className={css.title}>Recommended books</p>
           <div className={css.listContainer}>
             {!error && books && books.length > 0 ? (
-              <BooksList books={books} small={true} maxElem={3} />
+              <BooksList books={books} size="small" maxElem={3} />
             ) : (
               <p className={css.error}>Books not found</p>
             )}

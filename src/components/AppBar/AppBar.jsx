@@ -6,7 +6,7 @@ import css from "./AppBar.module.css";
 
 const AppBar = () => {
   const headerRef = useRef(null);
-  const containerRef = useRef(null); // Ссылка на контейнер
+  const containerRef = useRef(null);
 
   const handleScroll = () => {
     if (headerRef.current && containerRef.current) {

@@ -1,0 +1,35 @@
+.container {
+  border-radius: 12px;
+  width: 100%;
+  background-color: transparent;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  color: var(--main-color);
+  margin-bottom: 14px;
+}
+
+.subtitle {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: var(--inactive-color);
+  margin-bottom: 20px;
+}
+
+.imgWrapper {
+  width: 80px;
+  height: 80px;
+  padding: 24px;
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  margin: 0 auto;
+}

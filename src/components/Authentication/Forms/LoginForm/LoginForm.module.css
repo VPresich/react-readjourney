@@ -35,6 +35,10 @@
   color: var(--inactive-color);
 }
 
+.link:hover {
+  color: var(--main-color);
+}
+
 @media screen and (min-width: 375px) {
   .buttons {
     column-gap: 14px;

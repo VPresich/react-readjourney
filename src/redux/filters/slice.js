@@ -7,6 +7,7 @@ const filtersSlice = createSlice({
       title: "",
       author: "",
     },
+    library: { status: "All books" },
   },
   reducers: {
     saveQuery: (state, action) => {
@@ -20,8 +21,12 @@ const filtersSlice = createSlice({
         author: "",
       };
     },
+
+    saveBooksStatus: (state, action) => {
+      state.library.status = action.payload;
+    },
   },
 });
 
-export const { saveQuery, resetQuery } = filtersSlice.actions;
+export const { saveQuery, resetQuery, saveBooksStatus } = filtersSlice.actions;
 export default filtersSlice.reducer;

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import clsx from "clsx";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { setReadingBook } from "../../redux/reading/slice";
 import ImageElem from "../UI/ImageElem/ImageElem";
 import EllipsisText from "../UI/EllipsisText/EllipsisText";
 import ModalWrapper from "../UI/ModalWrapper/ModalWrapper";
@@ -18,10 +19,11 @@ import {
 } from "../../auxiliary/notification/notification";
 import css from "./BookCard.module.css";
 
-const BookCard = ({ book, small = false }) => {
+const BookCard = ({ book, size = "" }) => {
   const { _id, title, author, imageUrl } = book;
   const [showBookModal, setShowBookModal] = useState(false);
   const [showApproveAddModal, setApproveAddModal] = useState(false);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -32,7 +34,7 @@ const BookCard = ({ book, small = false }) => {
   };
 
   const handleBookModaleOpen = () => {
-    if (isLibrary) return;
+    if (size === "small") return;
     setShowBookModal(true);
   };
 
@@ -57,6 +59,11 @@ const BookCard = ({ book, small = false }) => {
     handleBookModaleClose();
   };
 
+  const handleStartReading = () => {
+    dispatch(setReadingBook(book));
+    navigate("/reading");
+  };
+
   const handleDelete = (id) => {
     console.log("handleDelete id: ", id);
     dispatch(removeBook(id))
@@ -71,33 +78,37 @@ const BookCard = ({ book, small = false }) => {
   };
 
   return (
-    <div className={clsx(css.container, small && css.small)}>
+    <div className={clsx(css.container, size && css[size])}>
       <ImageElem
         imgUrl={imageUrl}
         altText={title}
         onClick={handleBookModaleOpen}
-        auxStyles={small ? "third" : ""}
+        auxStyles={size}
       />
       <div className={css.wrapper}>
         <div className={css.infoContainer}>
           <EllipsisText
             text={title}
             maxLines={1}
-            className={clsx(css.title, small && css.small)}
+            className={clsx(css.title, size && css[size])}
           />
           <p className={css.author}>{author}</p>
         </div>
-        {isLibrary && !small && (
+        {isLibrary && size !== "small" && (
           <DeleteButton
             handleClick={() => {
-              small ? null : handleDelete(_id);
+              handleDelete(_id);
             }}
           />
         )}
       </div>
       {showBookModal && (
         <ModalWrapper onClose={handleBookModaleClose}>
-          <BookModal book={book} handleAddBook={handleAddBook}></BookModal>
+          <BookModal
+            book={book}
+            handleClick={isLibrary ? handleStartReading : handleAddBook}
+            isLibrary={isLibrary}
+          ></BookModal>
         </ModalWrapper>
       )}
       {showApproveAddModal && (
