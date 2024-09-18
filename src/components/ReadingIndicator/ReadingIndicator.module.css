@@ -1,0 +1,23 @@
+.container {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--main-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--control-color);
+}
+
+.on {
+  width: 15px;
+  height: 15px;
+  background-color: #e90516;
+}
+
+.off {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e90516;
+}

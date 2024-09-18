@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { feedbackSchema } from "./feedbackScema";
 import { startReading, stopReading } from "../../redux/reading/operations";
-
 import {
   successNotify,
   errNotify,
@@ -13,8 +12,8 @@ import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";
 import css from "./AddReading.module.css";
 
-const AddReading = ({ book }) => {
-  const [isStartReading, setIsStartReading] = useState(true);
+const AddReading = ({ book, initReading = true }) => {
+  const [isStartReading, setIsStartReading] = useState(initReading);
 
   const methods = useForm({
     resolver: yupResolver(feedbackSchema),
@@ -28,7 +27,9 @@ const AddReading = ({ book }) => {
 
   const onSubmit = (values) => {
     const data = { ...values };
+
     data.id = book._id;
+    console.log("onSubmit:", data);
     dispatch(isStartReading ? startReading(data) : stopReading(data))
       .unwrap(() => {
         successNotify("Succes start reading");

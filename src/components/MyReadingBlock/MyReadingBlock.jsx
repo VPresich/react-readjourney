@@ -1,15 +1,18 @@
-import { useSelector } from "react-redux";
-import { selectReadingBook } from "../../redux/reading/selectors";
 import BookCard from "../BookCard/BookCard";
+import ReadingIndicator from "../ReadingIndicator/ReadingIndicator";
 import css from "./MyReadingBlock.module.css";
 
-const MyReadingBlock = () => {
-  const readingBook = useSelector(selectReadingBook);
-
+const MyReadingBlock = ({ book, initReading = true, timeLeftToRead = "" }) => {
   return (
     <div className={css.container}>
-      <p className={css.title}>My reading</p>
-      <BookCard book={readingBook} />
+      <div className={css.titleContainer}>
+        <p className={css.title}>My reading</p>
+        <span className={timeLeftToRead}>{timeLeftToRead}</span>
+      </div>
+      <div className={css.content}>
+        <BookCard book={book} size="large" />
+        <ReadingIndicator isReading={initReading} />
+      </div>
     </div>
   );
 };

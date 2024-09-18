@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { startReading, stopReading } from "./operations";
 
-const booksSlice = createSlice({
-  name: "books",
+const readingSlice = createSlice({
+  name: "reading",
   initialState: {
     book: {},
     isLoading: false,
@@ -49,5 +49,5 @@ const booksSlice = createSlice({
   },
 });
 
-export default booksSlice.reducer;
-export const { setReadingBook } = booksSlice.actions;
+export default readingSlice.reducer;
+export const { setReadingBook } = readingSlice.actions;

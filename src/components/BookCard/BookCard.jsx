@@ -86,10 +86,10 @@ const BookCard = ({ book, size = "" }) => {
         auxStyles={size}
       />
       <div className={css.wrapper}>
-        <div className={css.infoContainer}>
+        <div className={clsx(css.infoContainer, size && css[size])}>
           <EllipsisText
             text={title}
-            maxLines={1}
+            maxLines={size === "large" ? 2 : 1}
             className={clsx(css.title, size && css[size])}
           />
           <p className={css.author}>{author}</p>

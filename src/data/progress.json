@@ -1,0 +1,18 @@
+[
+  {
+    "startPage": 1,
+    "startReading": "2023-11-11T22:49:29.590Z",
+    "finishPage": 74,
+    "finishReading": "2023-11-11T22:53:34.959Z",
+    "speed": 44,
+    "status": "inactive"
+  },
+  {
+    "startPage": 8,
+    "startReading": "2023-11-11T22:56:44.674Z",
+    "finishPage": 10,
+    "finishReading": "2023-11-11T23:02:29.046Z",
+    "speed": 21,
+    "status": "inactive"
+  }
+]
