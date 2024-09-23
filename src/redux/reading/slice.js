@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { startReading, stopReading } from "./operations";
+import { startReading, stopReading, deleteReading } from "./operations";
 
 const readingSlice = createSlice({
   name: "reading",
   initialState: {
     book: {},
     isLoading: false,
+    isDeleting: false,
     error: null,
   },
   reducers: {
@@ -31,7 +32,6 @@ const readingSlice = createSlice({
       })
 
       //------------------------------------------------------
-
       .addCase(stopReading.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -44,6 +44,22 @@ const readingSlice = createSlice({
 
       .addCase(stopReading.rejected, (state, action) => {
         state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      //------------------------------------------------------
+      .addCase(deleteReading.pending, (state) => {
+        state.isDeleting = true;
+        state.error = null;
+      })
+      .addCase(deleteReading.fulfilled, (state, action) => {
+        state.isDeleting = false;
+        state.error = null;
+        state.book = action.payload;
+      })
+
+      .addCase(deleteReading.rejected, (state, action) => {
+        state.isDeleting = false;
         state.error = action.payload;
       });
   },

@@ -8,6 +8,10 @@
   padding: 20px;
 }
 
+.container.isReading {
+  gap: 40px;
+}
+
 @media screen and (min-width: 375px) {
   .container {
     max-width: 335px;

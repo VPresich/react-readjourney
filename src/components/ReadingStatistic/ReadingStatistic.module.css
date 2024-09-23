@@ -1,0 +1,100 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--main-color);
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  stroke: var(--inactive-color);
+}
+
+.icon.active {
+  stroke: var(--main-color);
+}
+
+.text {
+  display: none;
+}
+
+.infoContainer,
+.pieContainer {
+  border-radius: 12px;
+  background-color: var(--control-color);
+  height: 211px;
+  padding: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+@media screen and (min-width: 768px) {
+  .infoContainer,
+  .pieContainer {
+    width: 321px;
+    height: 252px;
+  }
+
+  .btn {
+    width: 20px;
+    height: 20px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .infoContainer {
+    width: 313px;
+    height: 373px;
+  }
+
+  .pieContainer {
+    width: 313px;
+    height: 281px;
+  }
+
+  .text {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+    color: var(--inactive-color);
+  }
+}

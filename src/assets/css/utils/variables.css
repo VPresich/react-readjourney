@@ -9,6 +9,6 @@
   --blue-color: #4f92f7;
   --green-color: #30b94d;
   --red-color: #e90516;
-
-  /* -- rgba(227, 227, 227, 0.3); */
+  --delete-color: rgb(232, 80, 80);
+  --delete-border-color: rgba(232, 80, 80, 0.2);
 }

@@ -6,7 +6,7 @@ export const selectIsLoading = (state) => state.reading.isLoading;
 export const selectError = (state) => state.reading.error;
 
 const selectBookStatus = (state) => state.reading.book.status;
-export const selectBookProgress = (state) => state.reading.book.progress || [];
+export const selectBookProgress = (state) => state.reading.book?.progress || [];
 
 export const selectReadingBookStatus = createSelector(
   [selectBookStatus, selectBookProgress],

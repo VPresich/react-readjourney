@@ -3,28 +3,37 @@
   height: 28px;
   border-radius: 50%;
   border-radius: 100%;
-  background-color: rgba(232, 80, 80, 0.1);
-  border: 1px solid rgba(232, 80, 80, 0.2);
-
+  background-color: var(--control-color);
+  border: 1px solid var(--delete-border-color);
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
   margin: 0;
   padding: 0;
-  border: none;
-  transition: fill 0.3s ease-in-out, stroke 0.3s ease-in-out;
   flex-shrink: 0;
+}
+
+.btn.second {
+  border-color: none;
+  width: 14px;
+  height: 14px;
 }
 
 .icon {
   width: 18px;
   height: 18px;
   fill: transparent;
-  stroke: var(--main-color);
+  stroke: var(--delete-color);
+  transition: stroke 0.3s ease-in-out;
 }
 
-.btn:hover {
-  /* stroke: rgba(232, 80, 80, 0.2); */
+.icon.second {
+  width: 14px;
+  height: 14px;
+  stroke: var(--inactive-color);
+}
+
+.btn:hover .icon {
   stroke: var(--main-color);
 }

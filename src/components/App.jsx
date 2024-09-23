@@ -83,12 +83,20 @@ const App = () => {
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+            <RestrictedRoute
+              redirectTo="/recommended"
+              component={<RegisterPage />}
+            />
           }
         />
         <Route
           path="/login"
-          element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
+          element={
+            <RestrictedRoute
+              redirectTo="/recommended"
+              component={<LoginPage />}
+            />
+          }
         />
 
         <Route path="*" element={<Navigate to="/" replace />} />

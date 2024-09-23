@@ -20,7 +20,12 @@ const BookFilters = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
-    dispatch(saveQuery({ ...values }));
+    const trimmedValues = Object.keys(values).reduce((acc, key) => {
+      acc[key] =
+        typeof values[key] === "string" ? values[key].trim() : values[key];
+      return acc;
+    }, {});
+    dispatch(saveQuery({ ...trimmedValues }));
   };
 
   return (

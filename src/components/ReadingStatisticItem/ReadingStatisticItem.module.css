@@ -1,0 +1,158 @@
+.container {
+  width: 100%;
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+}
+
+.bullet {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 4px solid var(--inactive-color);
+}
+
+.bullet.active {
+  border-color: var(--main-color);
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.firstColumn {
+  width: 58px;
+  display: flex;
+  flex-direction: column;
+}
+
+.date {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.02em;
+  color: var(--inactive-color);
+  margin-bottom: 17px;
+}
+
+.date.active {
+  color: var(--main-color);
+}
+
+.percent {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: var(--inactive-color);
+  margin-bottom: 4px;
+}
+
+.percent.active {
+  color: var(--main-color);
+}
+
+.time {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--inactive-color);
+}
+
+.secondColumn {
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pages {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--inactive-color);
+  margin-bottom: 16px;
+}
+
+.graphWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-left: 7px;
+  margin-bottom: 4px;
+}
+
+.picture {
+  width: 43px;
+  height: 18px;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.speed {
+  width: 100%;
+  padding-left: 7px;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--inactive-color);
+}
+
+@media screen and (min-width: 768px) {
+  .picture {
+    width: 43px;
+    height: 16px;
+  }
+
+  .bullet {
+    width: 20px;
+    height: 20px;
+  }
+
+  .date {
+    font-size: 16px;
+    line-height: 1.12;
+  }
+
+  .percent {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .time {
+    font-size: 12px;
+    line-height: 1.17;
+  }
+
+  .pages {
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  .secondColumn {
+    width: 81px;
+  }
+
+  .graphWrapper {
+    gap: 8px;
+  }
+
+  .picture {
+    width: 59px;
+    height: 25px;
+  }
+
+  .speed {
+    font-size: 12px;
+    line-height: 1.17;
+  }
+}

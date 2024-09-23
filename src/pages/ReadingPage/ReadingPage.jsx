@@ -4,8 +4,10 @@ import {
   selectReadingBook,
   selectReadingBookStatus,
   selectTimeLeftToRead,
+  selectBookProgress,
 } from "../../redux/reading/selectors";
 import ProgressBlock from "../../components/ProgressBlock/ProgressBlock";
+import ReadingStatistic from "../../components/ReadingStatistic/ReadingStatistic";
 import AddReading from "../../components/AddReading/AddReading";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import MyReadingBlock from "../../components/MyReadingBlock/MyReadingBlock";
@@ -16,16 +18,22 @@ const ReadingPage = () => {
   const readingStatus = useSelector(selectReadingBookStatus);
   const initReading = readingStatus === "inactive";
   const timeLeftToRead = useSelector(selectTimeLeftToRead);
+  const progress = useSelector(selectBookProgress);
+  console.log("progress", progress);
   console.log("timeLeftToRead", timeLeftToRead);
 
   return (
     <React.Fragment>
-      <DocumentTitle>Recommended page</DocumentTitle>
-      <h2 className="visually-hidden"> Recommended page</h2>
+      <DocumentTitle>Reading page</DocumentTitle>
+      <h2 className="visually-hidden">Reading page</h2>
       <Dashboard>
         <React.Fragment>
           <AddReading book={readingBook} initReading={initReading} />
-          <ProgressBlock />
+          {progress.length > 0 ? (
+            <ReadingStatistic progress={progress} readingBook={readingBook} />
+          ) : (
+            <ProgressBlock />
+          )}
         </React.Fragment>
       </Dashboard>
       <MyReadingBlock

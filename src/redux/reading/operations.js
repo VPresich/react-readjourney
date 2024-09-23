@@ -26,3 +26,22 @@ export const stopReading = createAsyncThunk(
     }
   }
 );
+
+export const deleteReading = createAsyncThunk(
+  "books/deleteReading",
+  async (data, thunkAPI) => {
+    console.log("deleteReading", data);
+    try {
+      const response = await axiosInst.delete("books/reading", {
+        params: {
+          ...data,
+        },
+      });
+
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

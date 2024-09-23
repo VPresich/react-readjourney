@@ -8,7 +8,7 @@ const Logo = () => {
   const unDisplayText =
     location.pathname === "/recommended" || location.pathname == "/library";
   return (
-    <Link to="/" className={css.link}>
+    <Link to="/recommended" className={css.link}>
       <div className={css.iconContainer}>
         <svg className={css.icon} aria-label="Open book icon">
           <use href={`${iconsPath}#icon-logo`} />
