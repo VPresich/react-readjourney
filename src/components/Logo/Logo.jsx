@@ -6,7 +6,9 @@ import css from "./Logo.module.css";
 const Logo = () => {
   const location = useLocation();
   const unDisplayText =
-    location.pathname === "/recommended" || location.pathname == "/library";
+    location.pathname === "/recommended" ||
+    location.pathname === "/library" ||
+    location.pathname === "/reading";
   return (
     <Link to="/recommended" className={css.link}>
       <div className={css.iconContainer}>
