@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import clsx from "clsx";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import ResponsiveImage from "../UI/ResponsiveImg/ResponsiveImg";
+import ModalWrapper from "../UI/ModalWrapper/ModalWrapper";
+import ApproveReadModal from "../ApproveReadModal/ApproveReadModal";
 
 import imgDesktop1x from "../../assets/img/reading/desktop@1x.png";
 import imgDesktop2x from "../../assets/img/reading/desktop@2x.png";
@@ -26,18 +29,28 @@ const imageData = {
 };
 
 const ReadingStatisticItem = ({ item, readingBook, isActive = false }) => {
+  const [showApproveReadModal, setShowApproveReadModal] = useState(false);
   const { finishPage, finishReading, speed, startPage, startReading } = item;
   const dispatch = useDispatch();
   const { totalPages } = readingBook;
+
   const handleDelete = () => {
     dispatch(deleteReading({ bookId: readingBook._id, readingId: item._id }))
       .unwrap()
       .then(() => {
         successNotify("Success deleting");
       })
-      .catch(() => {
-        errNotify("Error deleting");
+      .catch((error) => {
+        if (error.includes("409")) {
+          setShowApproveReadModal(true);
+        } else {
+          errNotify(`Error deleting`);
+        }
       });
+  };
+
+  const handleApproveReadModalClose = () => {
+    setShowApproveReadModal(false);
   };
 
   return (
@@ -64,6 +77,11 @@ const ReadingStatisticItem = ({ item, readingBook, isActive = false }) => {
           <span className={css.speed}>{speed} pages per hour</span>
         </div>
       </div>
+      {showApproveReadModal && (
+        <ModalWrapper onClose={handleApproveReadModalClose}>
+          <ApproveReadModal />
+        </ModalWrapper>
+      )}
     </div>
   );
 };

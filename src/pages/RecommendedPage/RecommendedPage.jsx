@@ -5,6 +5,7 @@ import DocumentTitle from "../../components/DocumentTitle";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import Filters from "../../components/Filters/Filters";
 import AppDescription from "../../components/AppDescription/AppDescription";
+import AppQuote from "../../components/AppQuote/AppQuote";
 const RecommendedPage = () => {
   return (
     <React.Fragment>
@@ -14,6 +15,7 @@ const RecommendedPage = () => {
         <React.Fragment>
           <Filters />
           <AppDescription />
+          <AppQuote />
         </React.Fragment>
       </Dashboard>
       <RecommendedBlock />

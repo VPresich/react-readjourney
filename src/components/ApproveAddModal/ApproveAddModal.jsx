@@ -9,7 +9,7 @@ const imageData = {
   imgDesktop2x,
   imgMobile1x,
   imgMobile2x,
-  altText: "Books photo",
+  altText: "Ok image",
 };
 const ApproveAddModal = () => {
   return (

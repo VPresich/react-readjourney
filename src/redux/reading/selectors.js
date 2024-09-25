@@ -38,3 +38,21 @@ export const selectTimeLeftToRead = (state) => {
 
   return res.trim();
 };
+
+export const selectTotalReadingBookPages = (state) =>
+  state.reading.book.totalPages;
+
+export const selectIsBookFullyRead = createSelector(
+  [selectBookProgress, selectTotalReadingBookPages],
+  (progress, totalPages) => {
+    if (progress.length > 0) {
+      const lastProgressItem = progress[progress.length - 1];
+
+      if (lastProgressItem.status === "inactive") {
+        const lastPage = lastProgressItem.finishPage;
+        return lastPage >= totalPages;
+      }
+    }
+    return false;
+  }
+);

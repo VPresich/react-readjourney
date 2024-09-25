@@ -17,3 +17,8 @@ export const selectFilteredBooks = createSelector(
     );
   }
 );
+
+export const selectIsDone = (state, id) => {
+  const book = state.library.items.find((book) => book._id === id);
+  return book ? book.status === "done" : false;
+};

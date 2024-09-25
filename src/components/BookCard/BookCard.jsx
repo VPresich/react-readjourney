@@ -1,13 +1,15 @@
 import { useState } from "react";
 import clsx from "clsx";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsDone } from "../../redux/library/selectors";
 import { setReadingBook } from "../../redux/reading/slice";
 import ImageElem from "../UI/ImageElem/ImageElem";
 import EllipsisText from "../UI/EllipsisText/EllipsisText";
 import ModalWrapper from "../UI/ModalWrapper/ModalWrapper";
 import BookModal from "../BookModal/BookModal";
 import ApproveAddModal from "../ApproveAddModal/ApproveAddModal";
+import ApproveReadModal from "../ApproveReadModal/ApproveReadModal";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import {
   addBookFromRecommend,
@@ -23,7 +25,10 @@ const BookCard = ({ book, size = "" }) => {
   const { _id, title, author, imageUrl } = book;
   const [showBookModal, setShowBookModal] = useState(false);
   const [showApproveAddModal, setApproveAddModal] = useState(false);
+  const [showApproveReadModal, setApproveReadModal] = useState(false);
+
   const navigate = useNavigate();
+  const isDone = useSelector((state) => selectIsDone(state, book._id));
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -46,6 +51,10 @@ const BookCard = ({ book, size = "" }) => {
     setApproveAddModal(true);
   };
 
+  const handleApproveReadModalClose = () => {
+    setApproveReadModal(false);
+  };
+
   const handleAddBook = () => {
     dispatch(addBookFromRecommend(_id))
       .unwrap()
@@ -60,8 +69,12 @@ const BookCard = ({ book, size = "" }) => {
   };
 
   const handleStartReading = () => {
-    dispatch(setReadingBook(book));
-    navigate("/reading");
+    if (isDone) {
+      setApproveReadModal(true);
+    } else {
+      dispatch(setReadingBook(book));
+      navigate("/reading");
+    }
   };
 
   const handleDelete = (id) => {
@@ -114,6 +127,11 @@ const BookCard = ({ book, size = "" }) => {
       {showApproveAddModal && (
         <ModalWrapper onClose={handleApproveAddModalClose}>
           <ApproveAddModal />
+        </ModalWrapper>
+      )}
+      {showApproveReadModal && (
+        <ModalWrapper onClose={handleApproveReadModalClose}>
+          <ApproveReadModal />
         </ModalWrapper>
       )}
     </div>
