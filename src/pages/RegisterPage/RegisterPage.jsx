@@ -38,7 +38,8 @@ const RegisterPage = () => {
       .then(() => {
         successNotify(SUCCESS_REGISTRATION);
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log(error);
         errNotify(ERR_REGISTRATION);
       });
   };

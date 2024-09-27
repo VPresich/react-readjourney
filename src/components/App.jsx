@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { refreshUser } from "../redux/auth/operations";
@@ -96,6 +97,7 @@ const App = () => {
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <Toaster position="top-right" reverseOrder={false} />
     </Suspense>
   );
 };

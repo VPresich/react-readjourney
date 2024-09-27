@@ -9,5 +9,3 @@ export const ERR_LOGIN = "Error in email or password";
 export const SUCCESS_LOGIN = "Successed login";
 export const ERR_REGISTRATION = "Registration error";
 export const SUCCESS_REGISTRATION = "Successed registration";
-export const ERR_PHONE = "Phone number is invalide";
-export const ERR_AVATAR_URL = "Avatar url is invalide";

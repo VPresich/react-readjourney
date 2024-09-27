@@ -6,9 +6,10 @@ import {
   successNotify,
 } from "../../auxiliary/notification/notification";
 import {
-  ERR_REGISTRATION,
-  SUCCESS_REGISTRATION,
+  SUCCESS_LOGIN,
+  ERR_LOGIN,
 } from "../../components/Authentication/Forms/constants";
+
 import { logIn } from "../../redux/auth/operations";
 import DocumentTitle from "../../components/DocumentTitle";
 import ResponsiveImage from "../../components/UI/ResponsiveImg/ResponsiveImg";
@@ -36,10 +37,11 @@ const LoginPage = () => {
     dispatch(logIn(values))
       .unwrap()
       .then(() => {
-        successNotify(SUCCESS_REGISTRATION);
+        successNotify(SUCCESS_LOGIN);
       })
-      .catch(() => {
-        errNotify(ERR_REGISTRATION);
+      .catch((error) => {
+        console.log(error);
+        errNotify(ERR_LOGIN);
       });
   };
   return (

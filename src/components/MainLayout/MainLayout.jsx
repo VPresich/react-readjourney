@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
+
 import { selectIsRefreshing } from "../../redux/auth/selectors";
 
 import AppBar from "../AppBar/AppBar";
@@ -25,7 +25,6 @@ const MainLayout = () => {
               </div>
             </div>
           </main>
-          <Toaster position="top-right" reverseOrder={false} />
         </React.Fragment>
       )}
     </React.Fragment>

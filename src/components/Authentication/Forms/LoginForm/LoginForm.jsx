@@ -4,7 +4,6 @@ import Button from "../../../UI/Button/Button";
 import Input from "../../../UI/Input/Input";
 import { feedbackSchema } from "./feedbackSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { errNotify } from "../../../../auxiliary/notification/notification";
 import css from "./LoginForm.module.css";
 
 const LoginForm = ({ handleLogin }) => {
@@ -19,11 +18,7 @@ const LoginForm = ({ handleLogin }) => {
   const { handleSubmit } = methods;
 
   const onSubmit = async (values) => {
-    try {
-      await handleLogin(values);
-    } catch (error) {
-      errNotify(error.message);
-    }
+    await handleLogin(values);
   };
 
   return (

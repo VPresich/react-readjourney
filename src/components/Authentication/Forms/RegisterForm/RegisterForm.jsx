@@ -4,7 +4,6 @@ import Button from "../../../UI/Button/Button";
 import Input from "../../../UI/Input/Input";
 import { feedbackSchema } from "./feedbackSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { errNotify } from "../../../../auxiliary/notification/notification";
 import css from "./RegisterForm.module.css";
 
 const RegisterForm = ({ handleRegister }) => {
@@ -20,11 +19,7 @@ const RegisterForm = ({ handleRegister }) => {
   const { handleSubmit } = methods;
 
   const onSubmit = async (values) => {
-    try {     
-      await handleRegister(values);
-    } catch (error) {
-      errNotify(error.message);
-    }
+    await handleRegister(values);
   };
 
   return (
