@@ -16,7 +16,7 @@ import {
 } from "../../redux/library/selectors";
 import {
   errNotify,
-  successNotify,
+  // successNotify,
 } from "../../auxiliary/notification/notification";
 import BooksList from "../../components/BooksList/BooksList";
 import css from "./MyLibraryBlock.module.css";
@@ -33,9 +33,8 @@ const MyLibraryBlock = () => {
   useEffect(() => {
     dispatch(getUserBooks())
       .unwrap()
-      .then((data) => {
-        console.log(data);
-        successNotify("Succes fetch library");
+      .then(() => {
+        // successNotify("Succes fetch library");
       })
       .catch(() => {
         errNotify("Error fetching library");

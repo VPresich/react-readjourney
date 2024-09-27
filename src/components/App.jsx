@@ -5,10 +5,7 @@ import { refreshUser } from "../redux/auth/operations";
 import { resetRefreshState } from "../redux/auth/slice";
 import MainLayout from "./MainLayout/MainLayout";
 import Loader from "./UI/Loader/Loader";
-import {
-  errNotify,
-  successNotify,
-} from "../auxiliary/notification/notification";
+import { errNotify } from "../auxiliary/notification/notification";
 
 import RestrictedRoute from "./RestrictedRoute";
 import PrivateRoute from "./PrivateRoute";
@@ -29,9 +26,7 @@ const App = () => {
   useEffect(() => {
     dispatch(refreshUser())
       .unwrap()
-      .then(() => {
-        successNotify("Success: User updated");
-      })
+      .then(() => {})
       .catch(() => {
         errNotify("Error: Failed to update user");
       })

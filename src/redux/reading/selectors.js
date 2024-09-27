@@ -56,3 +56,26 @@ export const selectIsBookFullyRead = createSelector(
     return false;
   }
 );
+
+export const selectTotalReadPages = createSelector(
+  [selectBookProgress],
+  (progress) => {
+    return progress.reduce((totalPages, item) => {
+      const pagesRead = item.finishPage
+        ? item.finishPage - item.startPage + 1
+        : 0;
+      return totalPages + (pagesRead > 0 ? pagesRead : 0);
+    }, 0);
+  }
+);
+
+export const selectReadingProgressPercentage = createSelector(
+  [selectTotalReadPages, selectTotalReadingBookPages],
+  (readPages, totalPages) => {
+    if (!totalPages || totalPages === 0) {
+      return 0;
+    }
+    const percentage = ((readPages / totalPages) * 100).toFixed(1);
+    return percentage > 100 ? 100 : percentage;
+  }
+);

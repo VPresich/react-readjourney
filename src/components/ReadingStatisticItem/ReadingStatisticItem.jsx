@@ -13,7 +13,7 @@ import imgMobile2x from "../../assets/img/reading/mobile@2x.png";
 
 import { deleteReading } from "../../redux/reading/operations";
 import {
-  successNotify,
+  //   successNotify,
   errNotify,
 } from "../../auxiliary/notification/notification";
 import differenceInMinutes from "../../auxiliary/difference";
@@ -38,7 +38,7 @@ const ReadingStatisticItem = ({ item, readingBook, isActive = false }) => {
     dispatch(deleteReading({ bookId: readingBook._id, readingId: item._id }))
       .unwrap()
       .then(() => {
-        successNotify("Success deleting");
+        // successNotify("Success deleting");
       })
       .catch((error) => {
         if (error.includes("409")) {
@@ -60,14 +60,14 @@ const ReadingStatisticItem = ({ item, readingBook, isActive = false }) => {
         <div className={css.firstColumn}>
           <span className={css.date}>{dateFormat(finishReading)}</span>
           <span className={clsx(css.percent, isActive && css.active)}>
-            {(((finishPage - startPage) / totalPages) * 100).toFixed(1)} %
+            {(((finishPage - startPage + 1) / totalPages) * 100).toFixed(1)} %
           </span>
           <span className={css.time}>
             {differenceInMinutes(startReading, finishReading)} minutes
           </span>
         </div>
         <div className={css.secondColumn}>
-          <span className={css.pages}>{finishPage - startPage} pages</span>
+          <span className={css.pages}>{finishPage - startPage + 1} pages</span>
           <div className={css.graphWrapper}>
             <div className={css.picture}>
               <ResponsiveImage imageData={imageData} />

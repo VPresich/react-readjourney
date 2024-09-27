@@ -16,7 +16,7 @@ import {
   removeBook,
 } from "../../redux/library/operations";
 import {
-  successNotify,
+  // successNotify,
   errNotify,
 } from "../../auxiliary/notification/notification";
 import css from "./BookCard.module.css";
@@ -33,6 +33,7 @@ const BookCard = ({ book, size = "" }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const isLibrary = location.pathname === "/library";
+  const isReading = location.pathname === "/reading";
 
   const handleBookModaleClose = () => {
     setShowBookModal(false);
@@ -40,6 +41,7 @@ const BookCard = ({ book, size = "" }) => {
 
   const handleBookModaleOpen = () => {
     if (size === "small") return;
+    if (isReading) return;
     setShowBookModal(true);
   };
 
@@ -60,7 +62,6 @@ const BookCard = ({ book, size = "" }) => {
       .unwrap()
       .then(() => {
         handleApproveAddModalOpen();
-        successNotify("Success added book");
       })
       .catch(() => {
         errNotify("Error in adding book");
@@ -78,12 +79,10 @@ const BookCard = ({ book, size = "" }) => {
   };
 
   const handleDelete = (id) => {
-    console.log("handleDelete id: ", id);
     dispatch(removeBook(id))
       .unwrap()
-      .then((data) => {
-        console.log("My library - books", data);
-        successNotify("Success remove book");
+      .then(() => {
+        // successNotify("Success remove book");
       })
       .catch(() => {
         errNotify("Error removing book");

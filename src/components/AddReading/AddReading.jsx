@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useForm, FormProvider, Controller } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsBookFullyRead } from "../../redux/reading/selectors";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { feedbackSchema } from "./feedbackScema";
 import { startReading, stopReading } from "../../redux/reading/operations";
+import ModalWrapper from "../UI/ModalWrapper/ModalWrapper";
+import ApproveReadModal from "../ApproveReadModal/ApproveReadModal";
 import {
-  successNotify,
+  // successNotify,
   errNotify,
 } from "../../auxiliary/notification/notification";
 import Input from "../UI/Input/Input";
@@ -14,6 +17,9 @@ import css from "./AddReading.module.css";
 
 const AddReading = ({ book, initReading = true }) => {
   const [isStartReading, setIsStartReading] = useState(initReading);
+  const [isShowReadModal, setShowReadModal] = useState(false);
+  const isBookFullyRead = useSelector(selectIsBookFullyRead);
+
   const methods = useForm({
     resolver: yupResolver(feedbackSchema),
     defaultValues: {
@@ -24,15 +30,26 @@ const AddReading = ({ book, initReading = true }) => {
   const { handleSubmit } = methods;
   const dispatch = useDispatch();
 
+  const handleShowReadModalClose = () => {
+    setShowReadModal(false);
+  };
+
   const onSubmit = (values) => {
+    if (isBookFullyRead) {
+      setShowReadModal(true);
+      return;
+    }
     const data = { ...values };
     data.id = book._id;
     dispatch(isStartReading ? startReading(data) : stopReading(data))
       .unwrap()
       .then(() => {
-        successNotify(
-          isStartReading ? "Succes start reading" : "Succes stop reading"
-        );
+        // successNotify(
+        //   isStartReading ? "Succes start reading" : "Succes stop reading"
+        // );
+        if (isBookFullyRead) {
+          setShowReadModal(true);
+        }
       })
       .catch(() => {
         errNotify("Error start reading");
@@ -74,6 +91,11 @@ const AddReading = ({ book, initReading = true }) => {
           </Button>
         </form>
       </FormProvider>
+      {isShowReadModal && (
+        <ModalWrapper onClose={handleShowReadModalClose}>
+          <ApproveReadModal />
+        </ModalWrapper>
+      )}
     </React.Fragment>
   );
 };

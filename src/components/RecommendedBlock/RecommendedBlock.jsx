@@ -15,7 +15,7 @@ import {
 import { selectQuery } from "../../redux/filters/selectors";
 import {
   errNotify,
-  successNotify,
+  // successNotify,
 } from "../../auxiliary/notification/notification";
 import BooksList from "../../components/BooksList/BooksList";
 
@@ -32,7 +32,6 @@ const RecommendedBlock = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const query = useSelector(selectQuery);
-  console.log("query", query);
 
   useEffect(() => {
     dispatch(
@@ -44,7 +43,7 @@ const RecommendedBlock = () => {
     )
       .unwrap()
       .then(() => {
-        successNotify("Succes fetch books");
+        // successNotify("Succes fetch books");
       })
       .catch(() => {
         errNotify("Error fetching books");

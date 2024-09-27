@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { logOut } from "../auth/operations";
 import { getBooksPerPage, getRecommendedBooks } from "./operations";
 
 const booksSlice = createSlice({
@@ -70,6 +71,17 @@ const booksSlice = createSlice({
       .addCase(getRecommendedBooks.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+
+      //------------------------------------------------------
+      .addCase(logOut.fulfilled, (state) => {
+        state.items = [];
+        state.isLoading = false;
+        state.currentPage = 1;
+        state.totalItems = 30;
+        state.totalPages = 1;
+        state.itemsPerPage = 8;
+        state.error = null;
       });
   },
 });

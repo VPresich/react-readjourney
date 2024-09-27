@@ -19,9 +19,6 @@ const ReadingPage = () => {
   const initReading = readingStatus === "inactive";
   const timeLeftToRead = useSelector(selectTimeLeftToRead);
   const progress = useSelector(selectBookProgress);
-  console.log("progress", progress);
-  console.log("timeLeftToRead", timeLeftToRead);
-
   return (
     <React.Fragment>
       <DocumentTitle>Reading page</DocumentTitle>

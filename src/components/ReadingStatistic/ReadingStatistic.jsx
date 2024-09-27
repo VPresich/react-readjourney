@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import {
+  selectTotalReadPages,
+  selectReadingProgressPercentage,
+} from "../../redux/reading/selectors";
 import clsx from "clsx";
 import iconsPath from "../../assets/img/icons.svg";
 import ReadingStatisticItem from "../ReadingStatisticItem/ReadingStatisticItem";
@@ -6,10 +11,11 @@ import PieChart from "../PieChart/PieChart";
 import css from "./ReadingStatistic.module.css";
 
 const ReadingStatistic = ({ progress = [], readingBook = {} }) => {
-  console.log("ReadingBook", readingBook);
-  console.log("progress", progress);
+  const totalReadPages = useSelector(selectTotalReadPages);
+  const readingProgressPercentage = useSelector(
+    selectReadingProgressPercentage
+  );
   const [isDiary, setIsDiary] = useState(true);
-
   const handleClick = () => setIsDiary(!isDiary);
 
   return (
@@ -57,7 +63,10 @@ const ReadingStatistic = ({ progress = [], readingBook = {} }) => {
             reading history.
           </p>
           <div className={css.pieContainer}>
-            <PieChart percentage={20} />
+            <PieChart
+              percentageRead={readingProgressPercentage}
+              pagesRead={totalReadPages}
+            />
           </div>
         </React.Fragment>
       )}

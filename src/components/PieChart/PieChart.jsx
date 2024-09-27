@@ -4,17 +4,17 @@ import css from "./PieChart.module.css";
 
 Chart.register(ArcElement, Tooltip);
 
-const PieChart = ({ percentage, pagesRead }) => {
+const PieChart = ({ percentageRead, pagesRead }) => {
   const activeColor = "#30b94d";
-  const inactiveColor = "#141414";
+  const inactiveColor = "#1f1f1f";
 
   const data = {
     datasets: [
       {
-        data: [percentage, 100 - percentage],
+        data: [percentageRead, 100 - percentageRead],
         backgroundColor: [activeColor, inactiveColor],
         borderWidth: 0,
-        borderRadius: 10,
+        borderRadius: percentageRead >= 100 ? 0 : 10,
       },
     ],
   };
@@ -32,7 +32,7 @@ const PieChart = ({ percentage, pagesRead }) => {
       <div className={css.legend}>
         <span className={css.label}></span>
         <div className={css.legendInfo}>
-          <span className={css.value}>{percentage} %</span>
+          <span className={css.value}>{percentageRead} %</span>
           <span className={css.legendText}>{pagesRead} pages read </span>
         </div>
       </div>

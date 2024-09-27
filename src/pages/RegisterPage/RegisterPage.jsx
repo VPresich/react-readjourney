@@ -33,7 +33,6 @@ const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const handleRegister = (values) => {
-    console.log(values);
     dispatch(register(values))
       .unwrap()
       .then(() => {

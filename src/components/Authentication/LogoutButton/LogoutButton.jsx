@@ -1,9 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../UI/Button/Button";
-import {
-  errNotify,
-  successNotify,
-} from "../../../auxiliary/notification/notification";
+import { errNotify } from "../../../auxiliary/notification/notification";
 import { logOut } from "../../../redux/auth/operations";
 import { selectIsLoggedIn } from "../../../redux/auth/selectors";
 
@@ -15,7 +12,6 @@ const LogoutButton = ({ onClick = null }) => {
     dispatch(logOut())
       .unwrap()
       .then(() => {
-        successNotify("success logout");
         onClick && onClick();
       })
       .catch(() => {

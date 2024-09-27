@@ -11,7 +11,6 @@ const filtersSlice = createSlice({
   },
   reducers: {
     saveQuery: (state, action) => {
-      console.log(action.payload);
       state.query = action.payload;
     },
 
