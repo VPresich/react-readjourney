@@ -79,3 +79,24 @@ export const selectReadingProgressPercentage = createSelector(
     return percentage > 100 ? 100 : percentage;
   }
 );
+
+export const selectLastReadPage = createSelector(
+  [selectBookProgress],
+  (progress) => {
+    if (progress.length === 0) return 0;
+    return progress.reduce((lastReadPage, session) => {
+      const page =
+        session.finishPage !== undefined
+          ? session.finishPage
+          : session.startPage;
+      return page > lastReadPage ? page : lastReadPage;
+    }, 0);
+  }
+);
+
+export const selectStartReadingPage = createSelector(
+  [selectLastReadPage],
+  (lastReadPage) => {
+    return lastReadPage > 0 ? lastReadPage + 1 : 1;
+  }
+);

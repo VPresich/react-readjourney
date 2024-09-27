@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsBookFullyRead } from "../../redux/reading/selectors";
+import {
+  selectIsBookFullyRead,
+  selectStartReadingPage,
+  selectTotalReadingBookPages,
+} from "../../redux/reading/selectors";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { feedbackSchema } from "./feedbackScema";
 import { startReading, stopReading } from "../../redux/reading/operations";
@@ -18,10 +22,21 @@ import css from "./AddReading.module.css";
 const AddReading = ({ book, initReading = true }) => {
   const [isStartReading, setIsStartReading] = useState(initReading);
   const [isShowReadModal, setShowReadModal] = useState(false);
+
   const isBookFullyRead = useSelector(selectIsBookFullyRead);
+  const startReadPage = useSelector(selectStartReadingPage);
+  const totalPages = useSelector(selectTotalReadingBookPages);
+
+  console.log("startReadPage: ", startReadPage);
+  console.log("totalPages: ", totalPages);
+
+  const schema = useMemo(
+    () => feedbackSchema(startReadPage, totalPages),
+    [startReadPage, totalPages]
+  );
 
   const methods = useForm({
-    resolver: yupResolver(feedbackSchema),
+    resolver: yupResolver(schema),
     defaultValues: {
       page: 0,
     },
