@@ -11,7 +11,7 @@ const booksSlice = createSlice({
     currentPage: 1,
     totalItems: 30,
     totalPages: 1,
-    itemsPerPage: 8,
+    itemsPerPage: 10,
   },
   reducers: {
     setPage(state, action) {
@@ -20,6 +20,10 @@ const booksSlice = createSlice({
 
     resetPage(state) {
       state.currentPage = 1;
+    },
+
+    setItemsPerPage: (state, action) => {
+      state.itemsPerPage = action.payload;
     },
 
     resetBooksState(state) {
@@ -86,5 +90,6 @@ const booksSlice = createSlice({
   },
 });
 
-export const { setPage, resetNoticesState, resetPage } = booksSlice.actions;
+export const { setPage, resetNoticesState, resetPage, setItemsPerPage } =
+  booksSlice.actions;
 export default booksSlice.reducer;

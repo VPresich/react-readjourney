@@ -5,6 +5,7 @@ import { getRecommendedBooks } from "../../redux/books/operations";
 import { setPage } from "../../redux/books/slice";
 import Loader from "../../components/UI/Loader/Loader";
 import PaginationBlock from "../UI/PaginationBlock/PaginationBlock";
+import useResponsiveItemsPerPage from "../../hooks/useResponsiveItemsPerPage/useResponsiveItemsPerPage";
 import {
   selectIsLoading,
   selectBooks,
@@ -23,9 +24,9 @@ import css from "./RecommendedBlock.module.css";
 import { selectError } from "../../redux/auth/selectors";
 
 const RecommendedBlock = () => {
+  useResponsiveItemsPerPage();
   const dispatch = useDispatch();
   const books = useSelector(selectBooks);
-
   const currentPage = useSelector(selectCurrentBooksPage);
   const totalPages = useSelector(selectTotalPages);
   const itemsPerPage = useSelector(selectBooksPerPage);
