@@ -11,7 +11,7 @@ https://www.figma.com/file/z3m0rdBcEfLTJUBDkAKhWQ/BOOKS-READING?type=design&node
 
 
 
-Read App Journey Overview
+Read Journey Overview
 
 1. Registration Page
 URL: /register
