@@ -2,7 +2,10 @@ import { useState } from "react";
 import clsx from "clsx";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsDone } from "../../redux/library/selectors";
+import {
+  selectIsDone,
+  selectBookInLibrary,
+} from "../../redux/library/selectors";
 import { setReadingBook } from "../../redux/reading/slice";
 import ImageElem from "../UI/ImageElem/ImageElem";
 import EllipsisText from "../UI/EllipsisText/EllipsisText";
@@ -29,6 +32,9 @@ const BookCard = ({ book, size = "" }) => {
 
   const navigate = useNavigate();
   const isDone = useSelector((state) => selectIsDone(state, book._id));
+  const isBookInLibrary = useSelector((state) =>
+    selectBookInLibrary(state, book)
+  );
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -58,6 +64,10 @@ const BookCard = ({ book, size = "" }) => {
   };
 
   const handleAddBook = () => {
+    if (isBookInLibrary) {
+      errNotify("This book is already in the library.");
+      return;
+    }
     dispatch(addBookFromRecommend(_id))
       .unwrap()
       .then(() => {

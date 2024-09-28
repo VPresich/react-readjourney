@@ -18,7 +18,19 @@ export const selectFilteredBooks = createSelector(
   }
 );
 
-export const selectIsDone = (state, id) => {
-  const book = state.library.items.find((book) => book._id === id);
-  return book ? book.status === "done" : false;
-};
+export const selectIsDone = createSelector(
+  [selectOwnBooks, (_, id) => id],
+  (books, id) => {
+    const book = books.find((book) => book._id === id);
+    return book ? book.status === "done" : false;
+  }
+);
+
+export const selectBookInLibrary = createSelector(
+  [selectOwnBooks, (_, addedBook) => addedBook],
+  (books, addedBook) =>
+    books.some(
+      (book) =>
+        book.title === addedBook.title && book.author === addedBook.author
+    )
+);
