@@ -66,3 +66,11 @@ Description: The Reading Page displays the current reading status, including pro
             - Diary Component: Tracks reading events by date, showing the number of pages read, time spent reading, and the percentage of pages read compared to the total number of pages in the book. 
             - Statistics Component: Presented as a graph that allows users to track their reading progress over time.
 
+
+
+Main Technologies Used in the Project
+React: A JavaScript library for building user interfaces, enabling the development of dynamic and responsive web applications through reusable components.
+
+Redux: A state management library that helps maintain the application's state in a predictable manner, allowing for easier debugging and state sharing across components.
+
+Navigation: Utilized to facilitate smooth transitions between different pages and components within the application, enhancing user experience through libraries like React Router.
