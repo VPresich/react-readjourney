@@ -39,8 +39,7 @@ const LoginPage = () => {
       .then(() => {
         successNotify(SUCCESS_LOGIN);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         errNotify(ERR_LOGIN);
       });
   };

@@ -27,9 +27,6 @@ const AddReading = ({ book, initReading = true }) => {
   const startReadPage = useSelector(selectStartReadingPage);
   const totalPages = useSelector(selectTotalReadingBookPages);
 
-  console.log("startReadPage: ", startReadPage);
-  console.log("totalPages: ", totalPages);
-
   const schema = useMemo(
     () => feedbackSchema(startReadPage, totalPages),
     [startReadPage, totalPages]
